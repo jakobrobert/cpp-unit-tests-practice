@@ -3,4 +3,4 @@ file(GLOB LIB_SOURCES
 )
 
 add_library(lib STATIC ${LIB_SOURCES})
-target_include_directories(lib PUBLIC ${CMAKE_CURRENT_SOUCE_DIR})
+target_include_directories(lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
