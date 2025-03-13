@@ -2,5 +2,5 @@
 
 int MathFunctions::Factorial(int n)
 {
-    return -1;
+    return 1;
 }
