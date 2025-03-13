@@ -10,5 +10,8 @@ int MathFunctions::Factorial(int n)
     if (n < 2)
         return 1;
 
+    if (n > 12)
+        throw std::overflow_error("Factorial leads to overflow for n > 12");
+
     return n * Factorial(n - 1);
 }
