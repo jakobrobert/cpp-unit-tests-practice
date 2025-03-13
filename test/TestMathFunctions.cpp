@@ -31,3 +31,8 @@ TEST(TestMathFunctions, FactorialOfFour)
 {
     EXPECT_EQ(24, MathFunctions::Factorial(4));
 }
+
+TEST(TestMathFunctions, FactorialOfTen)
+{
+    EXPECT_EQ(3628800, MathFunctions::Factorial(10));
+}
