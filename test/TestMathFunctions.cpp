@@ -32,7 +32,12 @@ TEST(TestMathFunctions, FactorialOfFour)
     EXPECT_EQ(24, MathFunctions::Factorial(4));
 }
 
-TEST(TestMathFunctions, FactorialOfTen)
+TEST(TestMathFunctions, FactorialOfTwelve)
 {
-    EXPECT_EQ(3628800, MathFunctions::Factorial(10));
+    EXPECT_EQ(479001600, MathFunctions::Factorial(12));
+}
+
+TEST(TestMathFunctions, FactorialOfThirteen)
+{
+    EXPECT_THROW(MathFunctions::Factorial(13), std::overflow_error);
 }
