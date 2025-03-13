@@ -2,7 +2,10 @@
 
 #include "MathFunctions.h"
 
-// TODO Test exception for negative input
+TEST(TestMathFunctions, FactorialOfNegativeNumber)
+{
+    EXPECT_THROW(MathFunctions::Factorial(-1), std::invalid_argument);
+}
 
 TEST(TestMathFunctions, FactorialOfZero)
 {
