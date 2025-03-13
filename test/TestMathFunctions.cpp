@@ -23,3 +23,8 @@ TEST(TestMathFunctions, FactorialOfThree)
 {
     EXPECT_EQ(6, MathFunctions::Factorial(3));
 }
+
+TEST(TestMathFunctions, FactorialOfFour)
+{
+    EXPECT_EQ(24, MathFunctions::Factorial(4));
+}
