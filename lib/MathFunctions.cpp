@@ -18,15 +18,12 @@ int MathFunctions::Factorial(int n)
 
 double MathFunctions::Min(const std::vector<double>& numbers)
 {
-    if (numbers.empty())
-        return std::numeric_limits<double>::max();
+    double min = std::numeric_limits<double>::max();
 
-    double min = numbers[0];
-
-    for (int i = 1; i < numbers.size(); i++)
+    for (double number : numbers)
     {
-        if (numbers[i] < min)
-            min = numbers[i];
+        if (number < min)
+            min = number;
     }
 
     return min;
