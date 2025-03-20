@@ -15,3 +15,16 @@ int MathFunctions::Factorial(int n)
 
     return n * Factorial(n - 1);
 }
+
+double MathFunctions::Min(const std::vector<double>& numbers)
+{
+    double min = std::numeric_limits<double>::max();
+
+    for (double number : numbers)
+    {
+        if (number < min)
+            min = number;
+    }
+
+    return min;
+}
