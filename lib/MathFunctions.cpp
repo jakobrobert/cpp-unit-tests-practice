@@ -15,3 +15,8 @@ int MathFunctions::Factorial(int n)
 
     return n * Factorial(n - 1);
 }
+
+double MathFunctions::Min(const std::vector<double>& numbers)
+{
+    return 0.0;
+}
