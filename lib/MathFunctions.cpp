@@ -18,5 +18,8 @@ int MathFunctions::Factorial(int n)
 
 double MathFunctions::Min(const std::vector<double>& numbers)
 {
-    return std::numeric_limits<double>::max();
+    if (numbers.empty())
+        return std::numeric_limits<double>::max();
+
+    return numbers.front();
 }
