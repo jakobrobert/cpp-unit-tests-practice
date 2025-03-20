@@ -21,5 +21,13 @@ double MathFunctions::Min(const std::vector<double>& numbers)
     if (numbers.empty())
         return std::numeric_limits<double>::max();
 
-    return numbers.front();
+    double min = numbers[0];
+
+    for (int i = 1; i < numbers.size(); i++)
+    {
+        if (numbers[i] < min)
+            min = numbers[i];
+    }
+
+    return min;
 }
