@@ -41,3 +41,9 @@ TEST(TestMathFunctions, FactorialOfThirteen)
 {
     EXPECT_THROW(MathFunctions::Factorial(13), std::overflow_error);
 }
+
+TEST(TestMathFunctions, MinOfEmptyInput)
+{
+    std::vector<double> numbers;
+    EXPECT_EQ(std::numeric_limits<double>::max(), MathFunctions::Min(numbers));
+}
