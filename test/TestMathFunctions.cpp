@@ -47,3 +47,9 @@ TEST(TestMathFunctions, MinOfEmptyInput)
     std::vector<double> numbers;
     EXPECT_EQ(std::numeric_limits<double>::max(), MathFunctions::Min(numbers));
 }
+
+TEST(TestMathFunctions, MinOfOneNumber)
+{
+    std::vector<double> numbers{42.0};
+    EXPECT_EQ(42.0, MathFunctions::Min(numbers));
+}
