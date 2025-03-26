@@ -31,10 +31,6 @@ double MathFunctions::Min(const std::vector<double>& numbers)
 
 double MathFunctions::Sum(const std::vector<double>& numbers)
 {
-    // TODO Remove check (but first make test pass)
-    if (numbers.empty())
-        return 0.0;
-
     double sum = 0.0;
 
     for (double number : numbers)
