@@ -31,5 +31,5 @@ double MathFunctions::Min(const std::vector<double>& numbers)
 
 double MathFunctions::Sum(const std::vector<double>& numbers)
 {
-    return -1.0;
+    return 0.0;
 }
