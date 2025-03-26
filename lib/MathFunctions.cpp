@@ -41,5 +41,8 @@ double MathFunctions::Sum(const std::vector<double>& numbers)
 
 double MathFunctions::Average(const std::vector<double>& numbers)
 {
-    throw std::invalid_argument("Average is not defined for empty input");
+    if (numbers.empty())
+        throw std::invalid_argument("Average is not defined for empty input");
+
+    return numbers.front();
 }
