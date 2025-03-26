@@ -28,7 +28,7 @@ public:
 
     size_t Size() const
     {
-        if (head == nullptr)
+        if (IsEmpty())
             return 0;
 
         return 1;
