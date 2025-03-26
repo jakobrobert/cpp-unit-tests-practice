@@ -2,6 +2,8 @@
 
 #include "MathFunctions.h"
 
+static const double TOLERANCE = 1e-5;
+
 TEST(TestMathFunctions, FactorialOfNegativeNumber)
 {
     EXPECT_THROW(MathFunctions::Factorial(-1), std::invalid_argument);
@@ -88,4 +90,10 @@ TEST(TestMathFunctions, AverageOfOneNumber)
 {
     std::vector<double> numbers{42.0};
     EXPECT_EQ(42.0, MathFunctions::Average(numbers));
+}
+
+TEST(TestMathFunctions, AverageOfMultipleNumbers)
+{
+    std::vector<double> numbers{42.0, 16.9, 67.6};
+    EXPECT_NEAR(42.16666, MathFunctions::Average(numbers), TOLERANCE);
 }
