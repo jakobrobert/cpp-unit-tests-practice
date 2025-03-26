@@ -38,3 +38,8 @@ double MathFunctions::Sum(const std::vector<double>& numbers)
 
     return sum;
 }
+
+double MathFunctions::Average(const std::vector<double>& numbers)
+{
+    return -1.0;
+}
