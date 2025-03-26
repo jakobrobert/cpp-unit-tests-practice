@@ -71,3 +71,9 @@ TEST(TestMathFunctions, SumOfOneNumber)
     std::vector<double> numbers{42.0};
     EXPECT_EQ(42.0, MathFunctions::Sum(numbers));
 }
+
+TEST(TestMathFunctions, SumOfMultipleNumbers)
+{
+    std::vector<double> numbers{42.0, 16.9, 67.6};
+    EXPECT_EQ(126.5, MathFunctions::Sum(numbers));
+}
