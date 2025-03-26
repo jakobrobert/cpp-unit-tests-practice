@@ -83,3 +83,9 @@ TEST(TestMathFunctions, AverageOfEmptyInput)
     std::vector<double> numbers;
     EXPECT_THROW(MathFunctions::Average(numbers), std::invalid_argument);
 }
+
+TEST(TestMathFunctions, AverageOfOneNumber)
+{
+    std::vector<double> numbers{42.0};
+    EXPECT_EQ(42.0, MathFunctions::Average(numbers));
+}
