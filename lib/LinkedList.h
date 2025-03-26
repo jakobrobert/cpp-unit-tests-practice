@@ -4,5 +4,5 @@ template <typename T>
 class LinkedList
 {
 public:
-    bool IsEmpty() const { return false; }
+    bool IsEmpty() const { return true; }
 };
