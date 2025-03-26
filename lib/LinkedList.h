@@ -8,5 +8,5 @@ public:
 
     bool IsEmpty() const { return true; }
     size_t Size() const { return 0; }
-    // TODO method At(size_t index)
+    T At(size_t index) const { return T(); }
 };
