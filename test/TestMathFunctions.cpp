@@ -65,3 +65,9 @@ TEST(TestMathFunctions, SumOfEmptyInput)
     std::vector<double> numbers;
     EXPECT_EQ(0.0, MathFunctions::Sum(numbers));
 }
+
+TEST(TestMathFunctions, SumOfOneNumber)
+{
+    std::vector<double> numbers{42.0};
+    EXPECT_EQ(42.0, MathFunctions::Sum(numbers));
+}
