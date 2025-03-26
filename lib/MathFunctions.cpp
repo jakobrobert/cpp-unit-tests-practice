@@ -28,3 +28,8 @@ double MathFunctions::Min(const std::vector<double>& numbers)
 
     return min;
 }
+
+double MathFunctions::Sum(const std::vector<double>& numbers)
+{
+    return -1.0;
+}

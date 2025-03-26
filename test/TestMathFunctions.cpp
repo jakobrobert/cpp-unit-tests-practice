@@ -59,3 +59,9 @@ TEST(TestMathFunctions, MinOfMultipleNumbers)
     std::vector<double> numbers{42.0, 16.9, 67.6};
     EXPECT_EQ(16.9, MathFunctions::Min(numbers));
 }
+
+TEST(TestMathFunctions, SumOfEmptyInput)
+{
+    std::vector<double> numbers;
+    EXPECT_EQ(0.0, MathFunctions::Sum(numbers));
+}
