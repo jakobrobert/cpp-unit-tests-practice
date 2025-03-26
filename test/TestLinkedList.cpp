@@ -10,7 +10,6 @@ TEST(TestLinkedList, Empty)
     EXPECT_THROW(list.At(0), std::invalid_argument);
 }
 
-// TODO Test IsEmpty returns false for at least one element (need Add functionality for that)
 TEST(TestLinkedList, AddOneElement)
 {
     LinkedList<int> list;

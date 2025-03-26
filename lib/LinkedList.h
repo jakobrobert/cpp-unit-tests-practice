@@ -3,14 +3,45 @@
 template <typename T>
 class LinkedList
 {
-public:
-    void Add(T value) { }
+private:
+    struct Node
+    {
+        Node(const T& value)
+            : value(value), next(nullptr)
+        {}
 
-    bool IsEmpty() const { return true; }
-    size_t Size() const { return 0; }
+        T value;
+        Node* next;
+    };
+
+public:
+    // TODO fix memory leaks. remove all nodes in destructor? or use smart pointers?
+    void Add(T value)
+    {
+        head = new Node(value);
+    }
+
+    bool IsEmpty() const
+    {
+        return head == nullptr;
+    }
+
+    size_t Size() const
+    {
+        if (head == nullptr)
+            return 0;
+
+        return 1;
+    }
     
     T At(size_t index) const
     {
-        throw std::invalid_argument("Element at given index does not exist");
+        if (IsEmpty())
+            throw std::invalid_argument("Element at given index does not exist");
+
+        return head->value;
     }
+
+private:
+    Node* head = nullptr;
 };
