@@ -77,3 +77,9 @@ TEST(TestMathFunctions, SumOfMultipleNumbers)
     std::vector<double> numbers{42.0, 16.9, 67.6};
     EXPECT_EQ(126.5, MathFunctions::Sum(numbers));
 }
+
+TEST(TestMathFunctions, AverageOfEmptyInput)
+{
+    std::vector<double> numbers;
+    EXPECT_THROW(MathFunctions::Average(numbers), std::invalid_argument);
+}
