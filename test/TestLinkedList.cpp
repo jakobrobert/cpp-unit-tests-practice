@@ -35,6 +35,18 @@ TEST(TestLinkedList, RemoveOneElement)
 }
 
 // TODO Test AddMultipleElements
+TEST(TestLinkedList, AddMultipleElements)
+{
+    LinkedList<int> list;
+    list.Add(3);
+    list.Add(1);
+    list.Add(2);
+    EXPECT_FALSE(list.IsEmpty());
+    EXPECT_EQ(3, list.Size());
+    EXPECT_EQ(3, list.At(0));
+    EXPECT_EQ(1, list.At(1));
+    EXPECT_EQ(2, list.At(2));
+}
 
 // TODO Test RemoveMultipleElements
 
