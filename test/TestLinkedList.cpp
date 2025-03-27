@@ -18,3 +18,9 @@ TEST(TestLinkedList, AddOneElement)
     EXPECT_EQ(1, list.Size());
     EXPECT_EQ(42, list.At(0));
 }
+
+// TODO Test RemoveOneElement
+
+// TODO Test AddMultipleElements
+
+// TODO Test RemoveMultipleElements
