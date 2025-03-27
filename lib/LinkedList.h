@@ -57,7 +57,7 @@ public:
     T At(size_t index) const
     {
         if (head == nullptr)
-            throw std::invalid_argument("List is empty");
+            throw std::out_of_range("List is empty");
 
         size_t currentIndex = 0;
         Node* node = head;
@@ -71,7 +71,7 @@ public:
             currentIndex++;
         }
 
-        throw std::invalid_argument("Element at given index does not exist");
+        throw std::out_of_range("Index is too large");
     }
 
 private:
