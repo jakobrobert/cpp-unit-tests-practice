@@ -16,7 +16,7 @@ private:
 
 public:
     // TODO fix memory leaks. remove all nodes in destructor? or use smart pointers?
-    void Add(T value)
+    void Add(const T& value)
     {
         head = new Node(value);
     }
