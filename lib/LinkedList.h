@@ -18,7 +18,19 @@ public:
     // TODO fix memory leaks. remove all nodes in destructor? or use smart pointers?
     void Add(const T& value)
     {
-        head = new Node(value);
+        Node* newNode = new Node(value);
+
+        if (head == nullptr)
+        {
+            head = last = newNode;
+        }
+        else
+        {
+            last->next = newNode;
+            last = newNode; // TODO do tests still pass if this line is removed?
+        }
+
+        size++;
     }
 
     void RemoveLast()
@@ -37,20 +49,31 @@ public:
 
     size_t Size() const
     {
-        if (head == nullptr)
-            return 0;
-
-        return 1;
+        return size;
     }
     
     T At(size_t index) const
     {
         if (head == nullptr)
-            throw std::invalid_argument("Element at given index does not exist");
+            throw std::invalid_argument("List is empty");
 
-        return head->value;
+        size_t currentIndex = 0;
+        Node* node = head;
+        
+        while (node != nullptr)
+        {
+            if (currentIndex == index)
+                return node->value;
+
+            node = node->next;
+            currentIndex++;
+        }
+
+        throw std::invalid_argument("Element at given index does not exist");
     }
 
 private:
     Node* head = nullptr;
+    Node* last = nullptr;
+    size_t size = 0;
 };
