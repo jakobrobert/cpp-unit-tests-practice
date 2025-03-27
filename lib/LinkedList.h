@@ -28,7 +28,7 @@ public:
 
     size_t Size() const
     {
-        if (IsEmpty())
+        if (head == nullptr)
             return 0;
 
         return 1;
@@ -36,7 +36,7 @@ public:
     
     T At(size_t index) const
     {
-        if (IsEmpty())
+        if (head == nullptr)
             throw std::invalid_argument("Element at given index does not exist");
 
         return head->value;
