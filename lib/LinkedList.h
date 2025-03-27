@@ -23,6 +23,11 @@ public:
 
     void RemoveLast()
     {
+        if (head == nullptr)
+            return;
+
+        delete head;
+        head = nullptr;
     }
 
     bool IsEmpty() const
