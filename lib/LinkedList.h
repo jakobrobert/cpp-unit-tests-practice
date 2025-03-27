@@ -35,6 +35,8 @@ public:
 
     void RemoveLast()
     {
+        size--;
+
         if (head == nullptr)
             return;
 
