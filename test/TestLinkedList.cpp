@@ -7,7 +7,7 @@ TEST(TestLinkedList, Empty)
     LinkedList<int> list;
     EXPECT_TRUE(list.IsEmpty());
     EXPECT_EQ(0, list.Size());
-    EXPECT_THROW(list.At(0), std::invalid_argument);
+    EXPECT_THROW(list.At(0), std::out_of_range);
 }
 
 TEST(TestLinkedList, AddOneElement)
@@ -31,10 +31,9 @@ TEST(TestLinkedList, RemoveOneElement)
     list.RemoveLast();
     EXPECT_TRUE(list.IsEmpty());
     EXPECT_EQ(0, list.Size());
-    EXPECT_THROW(list.At(0), std::invalid_argument);
+    EXPECT_THROW(list.At(0), std::out_of_range);
 }
 
-// TODO Test AddMultipleElements
 TEST(TestLinkedList, AddMultipleElements)
 {
     LinkedList<int> list;
