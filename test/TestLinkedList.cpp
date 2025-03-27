@@ -17,6 +17,7 @@ TEST(TestLinkedList, AddOneElement)
     EXPECT_FALSE(list.IsEmpty());
     EXPECT_EQ(1, list.Size());
     EXPECT_EQ(42, list.At(0));
+    EXPECT_THROW(list.At(1), std::out_of_range);
 }
 
 TEST(TestLinkedList, RemoveOneElement)
@@ -27,6 +28,7 @@ TEST(TestLinkedList, RemoveOneElement)
     EXPECT_FALSE(list.IsEmpty());
     EXPECT_EQ(1, list.Size());
     EXPECT_EQ(42, list.At(0));
+    EXPECT_THROW(list.At(1), std::out_of_range);
 
     list.RemoveLast();
     EXPECT_TRUE(list.IsEmpty());
@@ -45,7 +47,7 @@ TEST(TestLinkedList, AddMultipleElements)
     EXPECT_EQ(3, list.At(0));
     EXPECT_EQ(1, list.At(1));
     EXPECT_EQ(2, list.At(2));
-    // TODO try to access index 3, should throw exception
+    EXPECT_THROW(list.At(3), std::out_of_range);
 }
 
 // TODO Test RemoveMultipleElements
