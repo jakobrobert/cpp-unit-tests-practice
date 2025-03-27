@@ -21,6 +21,10 @@ public:
         head = new Node(value);
     }
 
+    void RemoveLast()
+    {
+    }
+
     bool IsEmpty() const
     {
         return head == nullptr;

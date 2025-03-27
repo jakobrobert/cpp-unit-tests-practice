@@ -19,8 +19,22 @@ TEST(TestLinkedList, AddOneElement)
     EXPECT_EQ(42, list.At(0));
 }
 
-// TODO Test RemoveOneElement
+TEST(TestLinkedList, RemoveOneElement)
+{
+    LinkedList<int> list;
+
+    list.Add(42);
+    EXPECT_FALSE(list.IsEmpty());
+    EXPECT_EQ(1, list.Size());
+    EXPECT_EQ(42, list.At(0));
+
+    list.RemoveLast();
+    EXPECT_TRUE(list.IsEmpty());
+    EXPECT_EQ(0, list.Size());
+    EXPECT_THROW(list.At(0), std::invalid_argument);
+}
 
 // TODO Test AddMultipleElements
 
 // TODO Test RemoveMultipleElements
+
