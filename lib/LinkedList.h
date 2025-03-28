@@ -33,7 +33,7 @@ public:
         size++;
     }
 
-    void RemoveLast()
+    void RemoveFirst()
     {
         size--;
 

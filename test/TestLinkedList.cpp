@@ -30,7 +30,7 @@ TEST(TestLinkedList, RemoveOneElement)
     EXPECT_EQ(42, list.At(0));
     EXPECT_THROW(list.At(1), std::out_of_range);
 
-    list.RemoveLast();
+    list.RemoveFirst();
     EXPECT_TRUE(list.IsEmpty());
     EXPECT_EQ(0, list.Size());
     EXPECT_THROW(list.At(0), std::out_of_range);
