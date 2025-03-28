@@ -35,14 +35,13 @@ public:
 
     void RemoveFirst()
     {
-        size--;
-
         if (head == nullptr)
-            return;
+            throw std::out_of_range("List is empty");
 
         Node* oldHead = head;
         head = head->next;
         delete oldHead;
+        size--;
     }
 
     bool IsEmpty() const
