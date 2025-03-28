@@ -27,7 +27,7 @@ public:
         else
         {
             last->next = newNode;
-            last = newNode; // TODO do tests still pass if this line is removed?
+            last = newNode;
         }
 
         size++;
