@@ -60,14 +60,14 @@ public:
             throw std::out_of_range("List is empty");
 
         size_t currentIndex = 0;
-        Node* node = head;
+        Node* currentNode = head;
         
-        while (node != nullptr)
+        while (currentNode != nullptr)
         {
             if (currentIndex == index)
-                return node->value;
+                return currentNode->value;
 
-            node = node->next;
+            currentNode = currentNode->next;
             currentIndex++;
         }
 
