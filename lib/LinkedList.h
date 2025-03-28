@@ -40,8 +40,9 @@ public:
         if (head == nullptr)
             return;
 
-        delete head;
-        head = nullptr;
+        Node* oldHead = head;
+        head = head->next;
+        delete oldHead;
     }
 
     bool IsEmpty() const
