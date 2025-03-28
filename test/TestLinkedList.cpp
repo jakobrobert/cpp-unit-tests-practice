@@ -72,4 +72,8 @@ TEST(TestLinkedList, RemoveMultipleElements)
     EXPECT_THROW(list.At(1), std::out_of_range);
 }
 
-// TODO RemoveFromEmptyList -> expect out_of_range
+TEST(TestLinkedList, TryToRemoveFromEmptyList)
+{
+    LinkedList<int> list;
+    EXPECT_THROW(list.RemoveFirst(), std::out_of_range);
+}
