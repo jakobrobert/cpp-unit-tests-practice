@@ -54,7 +54,7 @@ public:
         return size;
     }
     
-    T At(size_t index) const
+    const T& At(size_t index) const
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");
