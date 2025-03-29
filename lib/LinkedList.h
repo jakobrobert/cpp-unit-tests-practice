@@ -47,6 +47,8 @@ public:
 
     void Clear()
     {
+        while (!IsEmpty())
+            RemoveFirst();
     }
 
     bool IsEmpty() const
