@@ -15,7 +15,8 @@ private:
     };
 
 public:
-    // TODO fix memory leaks. remove all nodes in destructor? or use smart pointers?
+    // TODO add destructor & delegate to Clear()
+
     void Add(const T& value)
     {
         Node* newNode = new Node(value);
@@ -42,6 +43,10 @@ public:
         head = head->next;
         delete oldHead;
         size--;
+    }
+
+    void Clear()
+    {
     }
 
     bool IsEmpty() const
