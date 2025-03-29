@@ -15,7 +15,10 @@ private:
     };
 
 public:
-    // TODO add destructor & delegate to Clear()
+    ~LinkedList()
+    {
+        Clear();
+    }
 
     void Add(const T& value)
     {
