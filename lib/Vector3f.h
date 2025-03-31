@@ -2,7 +2,7 @@ class Vector3f
 {
 public:
     Vector3f();
-    // TODO add parameterized constructor
+    Vector3f(float x, float y, float z);
 public:
     float x;
     float y;
