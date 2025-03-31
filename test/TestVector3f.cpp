@@ -17,5 +17,5 @@ TEST(TestVector3f, ParameterizedConstructor)
     Vector3f vector(-1.0f, 1e6f, 1e-6f);
     EXPECT_NEAR(-1.0f, vector.x, FLOAT_TOLERANCE);
     EXPECT_NEAR(1e6f, vector.y, FLOAT_TOLERANCE);
-    EXPECT_NEAR(1e-6f, vector.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(1e-6f, vector.z, FLOAT_TOLERANCE);
 }
