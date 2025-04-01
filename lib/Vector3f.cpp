@@ -9,3 +9,8 @@ Vector3f::Vector3f(float x, float y, float z)
     : x(x), y(y), z(z)
 {
 }
+
+bool Vector3f::operator==(const Vector3f &rhs) const
+{
+    return false;
+}

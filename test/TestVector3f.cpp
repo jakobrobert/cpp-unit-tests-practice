@@ -19,3 +19,19 @@ TEST(TestVector3f, ParameterizedConstructor)
     EXPECT_NEAR(1e6f, vector.y, FLOAT_TOLERANCE);
     EXPECT_NEAR(1e-6f, vector.z, FLOAT_TOLERANCE);
 }
+
+TEST(TestVector3f, OperatorEqualsReturnsTrue)
+{
+    Vector3f vec1(1.f, 2.f, 3.f);
+    Vector3f vec2(1.f, 2.f, 3.f);
+    EXPECT_TRUE(vec1 == vec2);
+    // TODO test != as well
+}
+
+TEST(TestVector3f, OperatorEqualsReturnsFalse)
+{
+    Vector3f vec1(1.f, 2.f, 3.f);
+    Vector3f vec2(1.f, 2.f, 4.f);
+    EXPECT_FALSE(vec1 == vec2);
+    // TODO test != as well
+}
