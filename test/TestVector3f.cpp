@@ -20,7 +20,7 @@ TEST(TestVector3f, ParameterizedConstructor)
     EXPECT_NEAR(1e-6f, vector.z, FLOAT_TOLERANCE);
 }
 
-TEST(TestVector3f, OperatorEqualsReturnsTrue)
+TEST(TestVector3f, OperatorEqualityVectorsAreEqual)
 {
     Vector3f vec1(1.f, 2.f, 3.f);
     Vector3f vec2(1.f, 2.f, 3.f);
@@ -28,7 +28,7 @@ TEST(TestVector3f, OperatorEqualsReturnsTrue)
     EXPECT_FALSE(vec1 != vec2);
 }
 
-TEST(TestVector3f, OperatorEqualsReturnsFalse)
+TEST(TestVector3f, OperatorEqualityVectorsAreNotEqual)
 {
     Vector3f vec1(1.f, 2.f, 3.f);
     Vector3f vec2(1.f, 2.f, 4.f);
