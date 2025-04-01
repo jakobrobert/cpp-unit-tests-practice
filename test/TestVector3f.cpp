@@ -25,7 +25,7 @@ TEST(TestVector3f, OperatorEqualsReturnsTrue)
     Vector3f vec1(1.f, 2.f, 3.f);
     Vector3f vec2(1.f, 2.f, 3.f);
     EXPECT_TRUE(vec1 == vec2);
-    // TODO test != as well
+    EXPECT_FALSE(vec1 != vec2);
 }
 
 TEST(TestVector3f, OperatorEqualsReturnsFalse)
@@ -33,5 +33,5 @@ TEST(TestVector3f, OperatorEqualsReturnsFalse)
     Vector3f vec1(1.f, 2.f, 3.f);
     Vector3f vec2(1.f, 2.f, 4.f);
     EXPECT_FALSE(vec1 == vec2);
-    // TODO test != as well
+    EXPECT_TRUE(vec1 != vec2);
 }
