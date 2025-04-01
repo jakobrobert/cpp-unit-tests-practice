@@ -17,5 +17,5 @@ bool Vector3f::operator==(const Vector3f &rhs) const
 
 bool Vector3f::operator!=(const Vector3f &rhs) const
 {
-    return false;
+    return !(*this == rhs);
 }
