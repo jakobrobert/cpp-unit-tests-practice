@@ -83,3 +83,10 @@ TEST(TestVector3, OperatorMinus)
     EXPECT_NEAR(2.2f, v3.y, FLOAT_TOLERANCE);
     EXPECT_NEAR(3.3f, v3.z, FLOAT_TOLERANCE);
 }
+
+TEST(TestVector3, DotProduct)
+{
+    Vector3 v1(1.1f, 2.2f, 3.3f);
+    Vector3 v2(4.4f, 5.5f, 6.6f);
+    EXPECT_NEAR(38.72f, v1.DotProduct(v2), FLOAT_TOLERANCE);
+}

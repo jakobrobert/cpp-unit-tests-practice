@@ -49,3 +49,8 @@ Vector3 Vector3::operator-(const Vector3& rhs) const
     result -= rhs;
     return result;
 }
+
+float Vector3::DotProduct(const Vector3 & rhs) const
+{
+    return 0.0f;
+}

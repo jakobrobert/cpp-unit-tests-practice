@@ -1,4 +1,4 @@
-class Vector3 // MYTODO rename to Vector3, including file names
+class Vector3
 {
 public:
     Vector3();
@@ -12,11 +12,11 @@ public:
     Vector3& operator-=(const Vector3& rhs);
     Vector3 operator-(const Vector3& rhs) const;
 
+    float DotProduct(const Vector3& rhs) const;
+    // MYTODO Cross product
+
     // MYTODO Normalize
     // MYTODO LengthSquared, Length
-
-    // MYTODO Dot product
-    // MYTODO Cross product
 
 public:
     float x;
