@@ -30,5 +30,7 @@ Vector3& Vector3::operator+=(const Vector3 &rhs)
 
 Vector3 Vector3::operator+(const Vector3& rhs) const
 {
-    return Vector3();
+    Vector3 result = *this;
+    result += rhs;
+    return result;
 }
