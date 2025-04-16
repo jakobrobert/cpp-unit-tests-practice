@@ -20,7 +20,10 @@ bool Vector3::operator!=(const Vector3 &rhs) const
     return !(*this == rhs);
 }
 
-Vector3 Vector3::operator+=(const Vector3 &rhs) const
+Vector3 Vector3::operator+=(const Vector3 &rhs)
 {
-    return Vector3();
+    x += rhs.x;
+    y += rhs.y;
+    z += rhs.z;
+    return *this;
 }
