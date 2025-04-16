@@ -90,3 +90,15 @@ TEST(TestVector3, DotProduct)
     Vector3 v2(4.4f, 5.5f, 6.6f);
     EXPECT_NEAR(38.72f, v1.DotProduct(v2), FLOAT_TOLERANCE);
 }
+
+TEST(TestVector3, CrossProduct)
+{
+    Vector3 v1(1.1f, 2.2f, 3.3f);
+    Vector3 v2(4.4f, 5.5f, 6.6f);
+
+    Vector3 v3 = v1.CrossProduct(v2);
+
+    EXPECT_NEAR(-3.63f, v3.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(7.26f, v3.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(-3.63f, v3.z, FLOAT_TOLERANCE);
+}

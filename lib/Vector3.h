@@ -13,6 +13,7 @@ public:
     Vector3 operator-(const Vector3& rhs) const;
 
     float DotProduct(const Vector3& rhs) const;
+    Vector3 CrossProduct(const Vector3& rhs) const;
     // MYTODO Cross product
 
     // MYTODO Normalize
