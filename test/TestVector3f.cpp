@@ -35,3 +35,15 @@ TEST(TestVector3f, OperatorEqualityVectorsAreNotEqual)
     EXPECT_FALSE(v1 == v2);
     EXPECT_TRUE(v1 != v2);
 }
+
+TEST(TestVector3f, OperatorPlusEquals)
+{
+    Vector3f v1(1.1f, 2.2f, 3.3f);
+    Vector3f v2(4.4f, 5.5f, 6.6f);
+
+    v1 += v2;
+
+    EXPECT_NEAR(1.5f, v1.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(3.5f, v1.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(5.5f, v1.z, FLOAT_TOLERANCE);
+}

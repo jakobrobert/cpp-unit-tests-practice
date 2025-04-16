@@ -19,3 +19,8 @@ bool Vector3f::operator!=(const Vector3f &rhs) const
 {
     return !(*this == rhs);
 }
+
+Vector3f Vector3f::operator+=(const Vector3f &rhs) const
+{
+    return Vector3f();
+}
