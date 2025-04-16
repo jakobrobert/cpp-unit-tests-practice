@@ -7,7 +7,7 @@ public:
     bool operator==(const Vector3& rhs) const;
     bool Vector3::operator!=(const Vector3 &rhs) const;
 
-    Vector3 operator+=(const Vector3& rhs);
+    Vector3& operator+=(const Vector3& rhs);
     // MYTODO operator+, it calls +=
     // MYTODO operator-=
     // MYTODO operator-, it calls -=
