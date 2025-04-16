@@ -14,10 +14,10 @@ public:
 
     float DotProduct(const Vector3& rhs) const;
     Vector3 CrossProduct(const Vector3& rhs) const;
-    // MYTODO Cross product
+    // TODO Cross product
 
-    // MYTODO Normalize
-    // MYTODO LengthSquared, Length
+    // TODO Normalize
+    // TODO LengthSquared, Length
 
 public:
     float x;
