@@ -14,7 +14,6 @@ public:
 
     float DotProduct(const Vector3& rhs) const;
     Vector3 CrossProduct(const Vector3& rhs) const;
-    // TODO Cross product
 
     // TODO Normalize
     // TODO LengthSquared, Length
