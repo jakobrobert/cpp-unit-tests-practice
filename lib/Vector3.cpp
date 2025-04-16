@@ -57,9 +57,8 @@ float Vector3::DotProduct(const Vector3& rhs) const
 
 Vector3 Vector3::CrossProduct(const Vector3 & rhs) const
 {
-    Vector3 result;
-    result.x = y * rhs.z - z * rhs.y;
-    result.y = z * rhs.x - x * rhs.z;
-    result.z = x * rhs.y - y * rhs.x;
-    return result;
+    float resultX = y * rhs.z - z * rhs.y;
+    float resultY = z * rhs.x - x * rhs.z;
+    float resultZ = x * rhs.y - y * rhs.x;
+    return Vector3(resultX, resultY, resultZ);
 }
