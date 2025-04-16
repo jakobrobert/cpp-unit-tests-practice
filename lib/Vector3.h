@@ -12,6 +12,11 @@ public:
     Vector3& operator-=(const Vector3& rhs);
     Vector3 operator-(const Vector3& rhs) const;
 
+    // TODO operator*= scalar
+    // TODO operator* scalar -> use *=
+    // TODO operator/= scalar -> use *=
+    // TODO operator/ scalar -> use /=
+
     float DotProduct(const Vector3& rhs) const;
     Vector3 CrossProduct(const Vector3& rhs) const;
 
