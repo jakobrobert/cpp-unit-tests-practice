@@ -43,7 +43,7 @@ TEST(TestVector3, OperatorPlusEquals)
 
     v1 += v2;
 
-    EXPECT_NEAR(1.5f, v1.x, FLOAT_TOLERANCE);
-    EXPECT_NEAR(3.5f, v1.y, FLOAT_TOLERANCE);
-    EXPECT_NEAR(5.5f, v1.z, FLOAT_TOLERANCE);
+    EXPECT_NEAR(5.5f, v1.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(7.7f, v1.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(9.9f, v1.z, FLOAT_TOLERANCE);
 }
