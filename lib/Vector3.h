@@ -9,8 +9,8 @@ public:
 
     Vector3& operator+=(const Vector3& rhs);
     Vector3 operator+(const Vector3& rhs) const;
-    // MYTODO operator-=
-    // MYTODO operator-, it calls -=
+    Vector3& operator-=(const Vector3& rhs);
+    Vector3 operator-(const Vector3& rhs) const;
 
     // MYTODO Normalize
     // MYTODO LengthSquared, Length

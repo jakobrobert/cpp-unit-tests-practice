@@ -34,3 +34,13 @@ Vector3 Vector3::operator+(const Vector3& rhs) const
     result += rhs;
     return result;
 }
+
+Vector3& Vector3::operator-=(const Vector3& rhs)
+{
+    return *this;
+}
+
+Vector3 Vector3::operator-(const Vector3& rhs) const
+{
+    return Vector3();
+}
