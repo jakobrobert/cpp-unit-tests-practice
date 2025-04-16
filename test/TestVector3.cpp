@@ -84,6 +84,28 @@ TEST(TestVector3, OperatorMinus)
     EXPECT_NEAR(3.3f, v3.z, FLOAT_TOLERANCE);
 }
 
+TEST(TestVector3, OperatorMultiplyEquals)
+{
+    Vector3 v1(1.1f, 2.2f, 3.3f);
+
+    v1 *= 42.42f;
+    
+    EXPECT_NEAR(46.662f, v1.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(93.324f, v1.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(139.986f, v1.z, FLOAT_TOLERANCE);
+}
+
+TEST(TestVector3, OperatorMultiply)
+{
+    Vector3 v1(1.1f, 2.2f, 3.3f);
+
+    Vector3 v2 = v1 * 42.42f;
+    
+    EXPECT_NEAR(46.662f, v2.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(93.324f, v2.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(139.986f, v2.z, FLOAT_TOLERANCE);
+}
+
 TEST(TestVector3, DotProduct)
 {
     Vector3 v1(1.1f, 2.2f, 3.3f);
