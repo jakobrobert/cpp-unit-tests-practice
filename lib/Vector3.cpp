@@ -50,7 +50,7 @@ Vector3 Vector3::operator-(const Vector3& rhs) const
     return result;
 }
 
-float Vector3::DotProduct(const Vector3 & rhs) const
+float Vector3::DotProduct(const Vector3& rhs) const
 {
-    return 0.0f;
+    return x * rhs.x + y * rhs.y + z * rhs.z;
 }
