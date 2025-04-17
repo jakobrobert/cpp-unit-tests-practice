@@ -65,6 +65,18 @@ Vector3 Vector3::operator*(float rhs) const
     return result;
 }
 
+Vector3& Vector3::operator/=(float rhs)
+{
+    // TODO use /* with reciprocal value
+    return *this;
+}
+
+Vector3 Vector3::operator/(float rhs) const
+{
+    // TODO use /=
+    return Vector3();
+}
+
 float Vector3::DotProduct(const Vector3& rhs) const
 {
     return x * rhs.x + y * rhs.y + z * rhs.z;

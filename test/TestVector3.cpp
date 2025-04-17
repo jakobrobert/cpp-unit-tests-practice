@@ -106,6 +106,28 @@ TEST(TestVector3, OperatorMultiply)
     EXPECT_NEAR(139.986f, v2.z, FLOAT_TOLERANCE);
 }
 
+TEST(TestVector3, OperatorDivideEquals)
+{
+    Vector3 v1(46.662f, 93.324f, 139.986f);
+
+    v1 /= 42.42f;
+    
+    EXPECT_NEAR(1.1f, v1.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(2.2f, v1.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(3.3f, v1.z, FLOAT_TOLERANCE);
+}
+
+TEST(TestVector3, OperatorDivide)
+{
+    Vector3 v1(46.662f, 93.324f, 139.986f);
+
+    Vector3 v2 = v1 / 42.42f;
+    
+    EXPECT_NEAR(1.1f, v2.x, FLOAT_TOLERANCE);
+    EXPECT_NEAR(2.2f, v2.y, FLOAT_TOLERANCE);
+    EXPECT_NEAR(3.3f, v2.z, FLOAT_TOLERANCE);
+}
+
 TEST(TestVector3, DotProduct)
 {
     Vector3 v1(1.1f, 2.2f, 3.3f);

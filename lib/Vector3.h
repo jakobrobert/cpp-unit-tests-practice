@@ -14,8 +14,8 @@ public:
 
     Vector3& operator*=(float rhs);
     Vector3 operator*(float rhs) const;
-    // TODO operator/= scalar -> use *= with reciprocal
-    // TODO operator/ scalar -> use /=
+    Vector3& operator/=(float rhs);
+    Vector3 operator/(float rhs) const;
 
     float DotProduct(const Vector3& rhs) const;
     Vector3 CrossProduct(const Vector3& rhs) const;
