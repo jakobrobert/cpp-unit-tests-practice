@@ -128,7 +128,12 @@ TEST(TestVector3, OperatorDivide)
     ExpectVector3Near(expected, actual, FLOAT_TOLERANCE);
 }
 
-// TODO add test for division by zero -> expect exception
+TEST(TestVector3, OperatorDivideByZero)
+{
+    Vector3 v(46.662f, 93.324f, 139.986f);
+
+    EXPECT_THROW(v / 0.f, std::domain_error);
+}
 
 TEST(TestVector3, DotProduct)
 {
