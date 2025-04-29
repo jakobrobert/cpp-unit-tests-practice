@@ -110,5 +110,6 @@ float Vector3::Length() const
 
 Vector3& Vector3::Normalize()
 {
+    *this /= Length();
     return *this;
 }
