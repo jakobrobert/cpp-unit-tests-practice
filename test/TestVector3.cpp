@@ -171,3 +171,10 @@ TEST(TestVector3, Normalize)
     v.Normalize();
     EXPECT_NEAR(1.f, v.Length(), FLOAT_TOLERANCE);
 }
+
+TEST(TestVector3, Normalized)
+{
+    Vector3 v(1.1f, 2.2f, 3.3f);
+    Vector3 result = v.Normalized();
+    EXPECT_NEAR(1.f, result.Length(), FLOAT_TOLERANCE);
+}

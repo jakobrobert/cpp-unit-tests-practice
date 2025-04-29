@@ -24,7 +24,7 @@ public:
     float Length() const;
 
     Vector3& Normalize();
-    // TODO Normalized -> returns new vector
+    Vector3 Normalized() const;
 
 public:
     float x;
