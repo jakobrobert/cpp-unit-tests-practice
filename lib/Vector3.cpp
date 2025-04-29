@@ -94,5 +94,5 @@ Vector3 Vector3::CrossProduct(const Vector3 & rhs) const
 
 float Vector3::LengthSquared() const
 {
-    return 0.0f;
+    return this->DotProduct(*this);
 }

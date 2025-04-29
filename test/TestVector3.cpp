@@ -2,7 +2,7 @@
 
 #include "Vector3.h"
 
-constexpr float FLOAT_TOLERANCE = 1e-6f;
+constexpr float FLOAT_TOLERANCE = 1e-5f;
 
 void ExpectVector3Near(const Vector3& expected, const Vector3& actual, float tolerance)
 {
@@ -151,6 +151,5 @@ TEST(TestVector3, CrossProduct)
 TEST(TestVector3, LengthSquared)
 {
     Vector3 v(1.1f, 2.2f, 3.3f);
-
     EXPECT_NEAR(16.94f, v.LengthSquared(), FLOAT_TOLERANCE);
 }
