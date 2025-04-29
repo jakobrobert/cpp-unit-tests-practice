@@ -23,7 +23,7 @@ public:
     float LengthSquared() const;
     float Length() const;
 
-    // TODO Normalize
+    Vector3& Normalize();
     // TODO Normalized -> returns new vector
 
 public:

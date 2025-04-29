@@ -107,3 +107,8 @@ float Vector3::Length() const
 {
     return std::sqrtf(LengthSquared());
 }
+
+Vector3& Vector3::Normalize()
+{
+    return *this;
+}
