@@ -145,3 +145,10 @@ TEST(TestVector3, CrossProduct)
     Vector3 expected(-3.63f, 7.26f, -3.63f);
     ExpectVector3Near(expected, actual, FLOAT_TOLERANCE);
 }
+
+TEST(TestVector3, LengthSquared)
+{
+    Vector3 v(1.1f, 2.2f, 3.3f);
+
+    EXPECT_NEAR(16.94f, v.LengthSquared(), FLOAT_TOLERANCE);
+}

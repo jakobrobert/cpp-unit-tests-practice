@@ -20,9 +20,10 @@ public:
     float DotProduct(const Vector3& rhs) const;
     Vector3 CrossProduct(const Vector3& rhs) const;
 
+    float LengthSquared() const;
+    // TODO LengthSquared, Length
     // TODO Normalize
     // TODO Normalized -> returns new vector
-    // TODO LengthSquared, Length
 
 public:
     float x;

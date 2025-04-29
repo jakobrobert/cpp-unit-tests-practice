@@ -91,3 +91,8 @@ Vector3 Vector3::CrossProduct(const Vector3 & rhs) const
     float resultZ = x * rhs.y - y * rhs.x;
     return Vector3(resultX, resultY, resultZ);
 }
+
+float Vector3::LengthSquared() const
+{
+    return 0.0f;
+}
