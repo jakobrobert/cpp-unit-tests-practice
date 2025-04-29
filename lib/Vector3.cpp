@@ -116,5 +116,7 @@ Vector3& Vector3::Normalize()
 
 Vector3 Vector3::Normalized() const
 {
-    return Vector3();
+    Vector3 result = *this;
+    result.Normalize();
+    return result;
 }
