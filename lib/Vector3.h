@@ -21,7 +21,8 @@ public:
     Vector3 CrossProduct(const Vector3& rhs) const;
 
     float LengthSquared() const;
-    // TODO LengthSquared, Length
+    float Length() const;
+
     // TODO Normalize
     // TODO Normalized -> returns new vector
 

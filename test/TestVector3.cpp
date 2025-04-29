@@ -153,3 +153,9 @@ TEST(TestVector3, LengthSquared)
     Vector3 v(1.1f, 2.2f, 3.3f);
     EXPECT_NEAR(16.94f, v.LengthSquared(), FLOAT_TOLERANCE);
 }
+
+TEST(TestVector3, Length)
+{
+    Vector3 v(1.1f, 2.2f, 3.3f);
+    EXPECT_NEAR(4.11582f, v.Length(), FLOAT_TOLERANCE);
+}

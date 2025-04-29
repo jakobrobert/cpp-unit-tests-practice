@@ -96,3 +96,8 @@ float Vector3::LengthSquared() const
 {
     return this->DotProduct(*this);
 }
+
+float Vector3::Length() const
+{
+    return 0.f;
+}
