@@ -67,7 +67,8 @@ Vector3 Vector3::operator*(float rhs) const
 
 Vector3& Vector3::operator/=(float rhs)
 {
-    // TODO use /* with reciprocal value
+    const float reciprocal = 1.f / rhs;
+    *this *= reciprocal;
     return *this;
 }
 
