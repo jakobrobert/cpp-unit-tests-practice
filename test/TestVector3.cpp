@@ -172,6 +172,12 @@ TEST(TestVector3, Normalize)
     EXPECT_NEAR(1.f, v.Length(), FLOAT_TOLERANCE);
 }
 
+TEST(TestVector3, NormalizeZeroVector)
+{
+    Vector3 v(0.f, 0.f, 0.f);
+    EXPECT_THROW(v.Normalize(), std::domain_error);
+}
+
 TEST(TestVector3, Normalized)
 {
     Vector3 v(1.1f, 2.2f, 3.3f);
