@@ -74,8 +74,9 @@ Vector3& Vector3::operator/=(float rhs)
 
 Vector3 Vector3::operator/(float rhs) const
 {
-    // TODO use /=
-    return Vector3();
+    Vector3 result = *this;
+    result /= rhs;
+    return result;
 }
 
 float Vector3::DotProduct(const Vector3& rhs) const
