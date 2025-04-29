@@ -1,6 +1,7 @@
 #include "Vector3.h"
 
 #include <cmath>
+#include <stdexcept>
 
 Vector3::Vector3()
     : x(0.f), y(0.f), z(0.f)
@@ -69,6 +70,9 @@ Vector3 Vector3::operator*(float rhs) const
 
 Vector3& Vector3::operator/=(float rhs)
 {
+    if (rhs == 0.f)
+        throw std::domain_error("Cannot divide by zero");
+
     const float reciprocal = 1.f / rhs;
     *this *= reciprocal;
     return *this;
