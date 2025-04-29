@@ -1,5 +1,7 @@
 #include "Vector3.h"
 
+#include <cmath>
+
 Vector3::Vector3()
     : x(0.f), y(0.f), z(0.f)
 {
@@ -99,5 +101,5 @@ float Vector3::LengthSquared() const
 
 float Vector3::Length() const
 {
-    return 0.f;
+    return std::sqrtf(LengthSquared());
 }
