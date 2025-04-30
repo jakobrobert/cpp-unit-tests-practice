@@ -24,7 +24,7 @@ public:
         Clear();
     }
 
-    void Add(const T& value)
+    void Add(const T& value) override
     {
         Node* newNode = new Node(value);
 
@@ -41,7 +41,7 @@ public:
         size++;
     }
 
-    void RemoveFirst()
+    void RemoveFirst() override
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");
@@ -58,17 +58,17 @@ public:
             RemoveFirst();
     }
 
-    bool IsEmpty() const
+    bool IsEmpty() const override
     {
         return head == nullptr;
     }
 
-    size_t Size() const
+    size_t Size() const override
     {
         return size;
     }
     
-    const T& At(size_t index) const
+    const T& At(size_t index) const override
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");
