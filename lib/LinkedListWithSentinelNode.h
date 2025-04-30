@@ -30,7 +30,7 @@ public:
 
     bool IsEmpty() const override
     {
-        return false;
+        return true;
     }
 
     size_t Size() const override
@@ -40,7 +40,6 @@ public:
 
     const T& At(size_t index) const override
     {
-        static T defaultValue;
-        return defaultValue;
+        throw std::out_of_range("list is empty");
     }
 };
