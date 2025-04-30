@@ -4,9 +4,32 @@
 #include "LinkedListSimple.h"
 #include "LinkedListWithSentinelNode.h"
 
+enum class ListType
+{
+    Simple,
+    WithSentinelNode
+};
+
+template <typename T>
+std::unique_ptr<List<T>> CreateList(ListType type)
+{
+    switch (type)
+    {
+        case ListType::Simple:
+            return std::make_unique<LinkedListSimple<T>>();
+        case ListType::WithSentinelNode:
+            return std::make_unique<LinkedListWithSentinelNode<T>>();
+        default:
+            throw std::invalid_argument("Invalid ListType");
+    }
+}
+
+// TODO Refactor: Make tests parameterized to instantiate both list impls for each test, reduce duplication.
+// -> First, only for test "Empty", merge both into one parameterized test.
+// -> Then for all other tests, expect all to fail because not implemented yet
 TEST(TestList, Empty)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(ListType::Simple);
     EXPECT_TRUE(list->IsEmpty());
     EXPECT_EQ(0, list->Size());
     EXPECT_THROW(list->At(0), std::out_of_range);
@@ -15,7 +38,7 @@ TEST(TestList, Empty)
 // TODO Remove temporary test later
 TEST(TestList, EmptyWithSentinelNode)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListWithSentinelNode<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(ListType::WithSentinelNode);
     EXPECT_TRUE(list->IsEmpty());
     EXPECT_EQ(0, list->Size());
     EXPECT_THROW(list->At(0), std::out_of_range);
