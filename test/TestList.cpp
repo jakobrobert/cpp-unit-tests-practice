@@ -24,21 +24,15 @@ std::unique_ptr<List<T>> CreateList(ListType type)
     }
 }
 
+class TestListParameterized : public ::testing::TestWithParam<ListType> {};
+
 // TODO Refactor: Make tests parameterized to instantiate both list impls for each test, reduce duplication.
 // -> First, only for test "Empty", merge both into one parameterized test.
 // -> Then for all other tests, expect all to fail because not implemented yet
-TEST(TestList, Empty)
+TEST_P(TestListParameterized, Empty)
 {
-    std::unique_ptr<List<int>> list = CreateList<int>(ListType::Simple);
-    EXPECT_TRUE(list->IsEmpty());
-    EXPECT_EQ(0, list->Size());
-    EXPECT_THROW(list->At(0), std::out_of_range);
-}
-
-// TODO Remove temporary test later
-TEST(TestList, EmptyWithSentinelNode)
-{
-    std::unique_ptr<List<int>> list = CreateList<int>(ListType::WithSentinelNode);
+    const ListType listType = GetParam();
+    std::unique_ptr<List<int>> list = CreateList<int>(listType);
     EXPECT_TRUE(list->IsEmpty());
     EXPECT_EQ(0, list->Size());
     EXPECT_THROW(list->At(0), std::out_of_range);
@@ -131,3 +125,9 @@ TEST(TestList, Clear)
     EXPECT_EQ(0, list->Size());
     EXPECT_THROW(list->At(0), std::out_of_range);
 }
+
+INSTANTIATE_TEST_SUITE_P(
+    ListImplementations,
+    TestListParameterized,
+    ::testing::Values(ListType::Simple, ListType::WithSentinelNode)
+);
