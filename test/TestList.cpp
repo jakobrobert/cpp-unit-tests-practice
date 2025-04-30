@@ -24,23 +24,19 @@ std::unique_ptr<List<T>> CreateList(ListType type)
     }
 }
 
-class TestListParameterized : public ::testing::TestWithParam<ListType> {};
+class TestList : public ::testing::TestWithParam<ListType> {};
 
-// TODO Refactor: Make tests parameterized to instantiate both list impls for each test, reduce duplication.
-// -> First, only for test "Empty", merge both into one parameterized test.
-// -> Then for all other tests, expect all to fail because not implemented yet
-TEST_P(TestListParameterized, Empty)
+TEST_P(TestList, Empty)
 {
-    const ListType listType = GetParam();
-    std::unique_ptr<List<int>> list = CreateList<int>(listType);
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     EXPECT_TRUE(list->IsEmpty());
     EXPECT_EQ(0, list->Size());
     EXPECT_THROW(list->At(0), std::out_of_range);
 }
 
-TEST(TestList, AddOneElement)
+TEST_P(TestList, AddOneElement)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     list->Add(42);
     EXPECT_FALSE(list->IsEmpty());
     EXPECT_EQ(1, list->Size());
@@ -48,9 +44,9 @@ TEST(TestList, AddOneElement)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
-TEST(TestList, RemoveOneElement)
+TEST_P(TestList, RemoveOneElement)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
 
     list->Add(42);
     EXPECT_FALSE(list->IsEmpty());
@@ -64,9 +60,9 @@ TEST(TestList, RemoveOneElement)
     EXPECT_THROW(list->At(0), std::out_of_range);
 }
 
-TEST(TestList, AddMultipleElements)
+TEST_P(TestList, AddMultipleElements)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     list->Add(3);
     list->Add(1);
     list->Add(2);
@@ -78,9 +74,9 @@ TEST(TestList, AddMultipleElements)
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
 
-TEST(TestList, RemoveMultipleElements)
+TEST_P(TestList, RemoveMultipleElements)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
 
     list->Add(3);
     list->Add(1);
@@ -100,15 +96,15 @@ TEST(TestList, RemoveMultipleElements)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
-TEST(TestList, TryToRemoveFromEmptyList)
+TEST_P(TestList, TryToRemoveFromEmptyList)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     EXPECT_THROW(list->RemoveFirst(), std::out_of_range);
 }
 
-TEST(TestList, Clear)
+TEST_P(TestList, Clear)
 {
-    std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
 
     list->Add(3);
     list->Add(1);
@@ -128,6 +124,6 @@ TEST(TestList, Clear)
 
 INSTANTIATE_TEST_SUITE_P(
     ListImplementations,
-    TestListParameterized,
+    TestList,
     ::testing::Values(ListType::Simple, ListType::WithSentinelNode)
 );
