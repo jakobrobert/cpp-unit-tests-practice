@@ -2,10 +2,20 @@
 #include <memory>
 
 #include "LinkedListSimple.h"
+#include "LinkedListWithSentinelNode.h"
 
 TEST(TestList, Empty)
 {
     std::unique_ptr<List<int>> list = std::make_unique<LinkedListSimple<int>>();
+    EXPECT_TRUE(list->IsEmpty());
+    EXPECT_EQ(0, list->Size());
+    EXPECT_THROW(list->At(0), std::out_of_range);
+}
+
+// TODO Remove temporary test later
+TEST(TestList, EmptyWithSentinelNode)
+{
+    std::unique_ptr<List<int>> list = std::make_unique<LinkedListWithSentinelNode<int>>();
     EXPECT_TRUE(list->IsEmpty());
     EXPECT_EQ(0, list->Size());
     EXPECT_THROW(list->At(0), std::out_of_range);
