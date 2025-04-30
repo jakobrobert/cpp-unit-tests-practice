@@ -4,10 +4,7 @@ template <typename T>
 class List
 {
 public:
-    virtual ~List()
-    {
-        Clear();
-    }
+    virtual ~List() {}
 
     virtual void Add(const T& value) = 0;
     virtual void RemoveFirst() = 0;

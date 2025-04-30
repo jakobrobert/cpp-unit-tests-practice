@@ -1,7 +1,11 @@
 #pragma once
 
+#include "List.h"
+
+#include <stdexcept>
+
 template <typename T>
-class LinkedList
+class LinkedList : public List<T>
 {
 private:
     struct Node
@@ -15,7 +19,7 @@ private:
     };
 
 public:
-    ~LinkedList()
+    ~LinkedList() override
     {
         Clear();
     }
@@ -48,7 +52,7 @@ public:
         size--;
     }
 
-    void Clear()
+    void Clear() override
     {
         while (!IsEmpty())
             RemoveFirst();
