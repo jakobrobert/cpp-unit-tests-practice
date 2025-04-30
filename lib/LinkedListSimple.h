@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 template <typename T>
-class LinkedList : public List<T>
+class LinkedListSimple : public List<T>
 {
 private:
     struct Node
@@ -19,7 +19,7 @@ private:
     };
 
 public:
-    ~LinkedList() override
+    ~LinkedListSimple() override
     {
         Clear();
     }

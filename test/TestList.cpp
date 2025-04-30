@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 
-#include "LinkedList.h"
+#include "LinkedListSimple.h"
 
 TEST(TestLinkedList, Empty)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
     EXPECT_TRUE(list.IsEmpty());
     EXPECT_EQ(0, list.Size());
     EXPECT_THROW(list.At(0), std::out_of_range);
@@ -12,7 +12,7 @@ TEST(TestLinkedList, Empty)
 
 TEST(TestLinkedList, AddOneElement)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
     list.Add(42);
     EXPECT_FALSE(list.IsEmpty());
     EXPECT_EQ(1, list.Size());
@@ -22,7 +22,7 @@ TEST(TestLinkedList, AddOneElement)
 
 TEST(TestLinkedList, RemoveOneElement)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
 
     list.Add(42);
     EXPECT_FALSE(list.IsEmpty());
@@ -38,7 +38,7 @@ TEST(TestLinkedList, RemoveOneElement)
 
 TEST(TestLinkedList, AddMultipleElements)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
     list.Add(3);
     list.Add(1);
     list.Add(2);
@@ -52,7 +52,7 @@ TEST(TestLinkedList, AddMultipleElements)
 
 TEST(TestLinkedList, RemoveMultipleElements)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
 
     list.Add(3);
     list.Add(1);
@@ -74,13 +74,13 @@ TEST(TestLinkedList, RemoveMultipleElements)
 
 TEST(TestLinkedList, TryToRemoveFromEmptyList)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
     EXPECT_THROW(list.RemoveFirst(), std::out_of_range);
 }
 
 TEST(TestLinkedList, Clear)
 {
-    LinkedList<int> list;
+    LinkedListSimple<int> list;
 
     list.Add(3);
     list.Add(1);
