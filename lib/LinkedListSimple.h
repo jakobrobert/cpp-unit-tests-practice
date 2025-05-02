@@ -1,7 +1,11 @@
 #pragma once
 
+#include "List.h"
+
+#include <stdexcept>
+
 template <typename T>
-class LinkedList
+class LinkedListSimple : public List<T>
 {
 private:
     struct Node
@@ -15,12 +19,12 @@ private:
     };
 
 public:
-    ~LinkedList()
+    ~LinkedListSimple() override
     {
         Clear();
     }
 
-    void Add(const T& value)
+    void Add(const T& value) override
     {
         Node* newNode = new Node(value);
 
@@ -37,7 +41,7 @@ public:
         size++;
     }
 
-    void RemoveFirst()
+    void RemoveFirst() override
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");
@@ -48,23 +52,23 @@ public:
         size--;
     }
 
-    void Clear()
+    void Clear() override
     {
         while (!IsEmpty())
             RemoveFirst();
     }
 
-    bool IsEmpty() const
+    bool IsEmpty() const override
     {
         return head == nullptr;
     }
 
-    size_t Size() const
+    size_t Size() const override
     {
         return size;
     }
     
-    const T& At(size_t index) const
+    const T& At(size_t index) const override
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");
