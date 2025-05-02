@@ -43,7 +43,7 @@ public:
             throw std::out_of_range("List is empty");
 
         Node* nodeToRemove = sentinel->next;
-        sentinel->next = nodeToRemove;
+        sentinel->next = nodeToRemove->next;
 
         if (nodeToRemove == last)
             last = sentinel;
@@ -80,14 +80,15 @@ public:
     
     const T& At(size_t index) const override
     {
-        if (sentinel == nullptr)
+        if (sentinel->next == nullptr)
             throw std::out_of_range("List is empty");
 
         size_t currentIndex = 0;
-        Node* currentNode = sentinel;
+        Node* currentNode = sentinel->next;
         
         while (currentNode != nullptr)
         {
+            // TODO Optimize: No need to do this index check, can just move next pointer in for loop, iterating by index
             if (currentIndex == index)
                 return currentNode->value;
 
@@ -95,6 +96,7 @@ public:
             currentIndex++;
         }
 
+        // TODO Optimize: Do check index >= size in beginning. same in LinkedListSimple
         throw std::out_of_range("Index is too large");
     }
 
