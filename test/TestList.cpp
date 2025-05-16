@@ -44,14 +44,10 @@ TEST_P(TestList, AddOneElement)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
-// TODO test: insert one at beginning
-
-// TODO test: insert one at middle
-
-TEST_P(TestList, InsertOneElementAtEnd)
+TEST_P(TestList, InsertOneElement)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-    list->InsertAt(list->Size(), 42);
+    list->InsertAt(0, 42);
     EXPECT_FALSE(list->IsEmpty());
     EXPECT_EQ(1, list->Size());
     EXPECT_EQ(42, list->At(0));
