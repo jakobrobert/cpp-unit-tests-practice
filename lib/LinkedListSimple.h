@@ -41,7 +41,40 @@ public:
         size++;
     }
 
+    void InsertAt(size_t index, const T& value) override
+    {
+        Node* newNode = new Node(value);
+        size++;
+
+        if (head == nullptr)
+        {
+            head = last = newNode;
+            return;
+        }
+
+        if (index == 0)
+        {
+            newNode->next = head;
+            head = newNode;
+            return;
+        }
+
+        last->next = newNode;
+        last = newNode;
+    }
+
     void RemoveFirst() override
+    {
+        if (head == nullptr)
+            throw std::out_of_range("List is empty");
+
+        Node* oldHead = head;
+        head = head->next;
+        delete oldHead;
+        size--;
+    }
+
+    void RemoveAt(size_t index) override
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");

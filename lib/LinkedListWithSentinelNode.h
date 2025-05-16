@@ -37,7 +37,30 @@ public:
         size++;
     }
 
+    void InsertAt(size_t index, const T& value) override
+    {
+        Node* newNode = new Node(value);
+        last->next = newNode;
+        last = newNode;
+        size++;
+    }
+
     void RemoveFirst() override
+    {
+        if (IsEmpty())
+            throw std::out_of_range("List is empty");
+
+        Node* nodeToRemove = sentinel->next;
+        sentinel->next = nodeToRemove->next;
+
+        if (nodeToRemove == last)
+            last = sentinel;
+
+        delete nodeToRemove;
+        size--;
+    }
+
+    void RemoveAt(size_t index) override
     {
         if (IsEmpty())
             throw std::out_of_range("List is empty");
