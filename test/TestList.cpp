@@ -44,6 +44,10 @@ TEST_P(TestList, AddOneElement)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
+// TODO test: insert one at beginning
+
+// TODO test: insert one at middle
+
 TEST_P(TestList, InsertOneElementAtEnd)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
@@ -86,6 +90,10 @@ TEST_P(TestList, RemoveOneElementAtBeginning)
     EXPECT_THROW(list->At(0), std::out_of_range);
 }
 
+// TODO Test: remove one at middle
+
+// TODO Test: remove one at end
+
 TEST_P(TestList, AddMultipleElements)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
@@ -99,6 +107,10 @@ TEST_P(TestList, AddMultipleElements)
     EXPECT_EQ(2, list->At(2));
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
+
+// TODO Test: add multiple at beginning
+
+// TODO Test: add multiple at middle
 
 TEST_P(TestList, AddMultipleElementsAtEnd)
 {
@@ -157,6 +169,10 @@ TEST_P(TestList, RemoveMultipleElementsAtBeginning)
     EXPECT_EQ(2, list->At(0));
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
+
+// TODO Test: Remove multiple at middle
+
+// TODO Test: Remove multiple at end
 
 TEST_P(TestList, TryToRemoveFromEmptyList)
 {
