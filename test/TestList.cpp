@@ -209,5 +209,13 @@ TEST_P(TestList, Clear)
 INSTANTIATE_TEST_SUITE_P(
     ListImplementations,
     TestList,
-    ::testing::Values(ListType::Simple, ListType::WithSentinelNode)
+    ::testing::Values(ListType::Simple, ListType::WithSentinelNode),
+    [](const testing::TestParamInfo<ListType>& info) {
+        switch (info.param)
+        {
+            case ListType::Simple: return "Simple";
+            case ListType::WithSentinelNode: return "WithSentinelNode";
+            default: return "Unknown";
+        }
+    }
 );
