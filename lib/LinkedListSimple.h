@@ -51,7 +51,14 @@ public:
             head = last = newNode;
             return;
         }
-        
+
+        if (index == 0)
+        {
+            newNode->next = head;
+            head = newNode;
+            return;
+        }
+
         last->next = newNode;
         last = newNode;
     }
