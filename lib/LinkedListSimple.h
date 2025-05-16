@@ -41,6 +41,11 @@ public:
         size++;
     }
 
+    void InsertAt(size_t index) override
+    {
+        // TODO implement
+    }
+
     void RemoveFirst() override
     {
         if (head == nullptr)
@@ -50,6 +55,11 @@ public:
         head = head->next;
         delete oldHead;
         size--;
+    }
+
+    void RemoveAt(size_t index) override
+    {
+        // TODO implement
     }
 
     void Clear() override

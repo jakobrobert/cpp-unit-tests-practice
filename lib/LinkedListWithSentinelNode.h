@@ -37,6 +37,11 @@ public:
         size++;
     }
 
+    void InsertAt(size_t index) override
+    {
+        // TODO implement
+    }
+
     void RemoveFirst() override
     {
         if (IsEmpty())
@@ -50,6 +55,11 @@ public:
 
         delete nodeToRemove;
         size--;
+    }
+
+    void RemoveAt(size_t index) override
+    {
+        // TODO implement
     }
 
     void Clear() override
