@@ -43,7 +43,19 @@ public:
 
     void InsertAt(size_t index, const T& value) override
     {
-        // TODO implement
+        Node* newNode = new Node(value);
+
+        if (head == nullptr)
+        {
+            head = last = newNode;
+        }
+        else
+        {
+            last->next = newNode;
+            last = newNode;
+        }
+
+        size++;
     }
 
     void RemoveFirst() override
@@ -59,7 +71,13 @@ public:
 
     void RemoveAt(size_t index) override
     {
-        // TODO implement
+        if (head == nullptr)
+            throw std::out_of_range("List is empty");
+
+        Node* oldHead = head;
+        head = head->next;
+        delete oldHead;
+        size--;
     }
 
     void Clear() override
