@@ -44,6 +44,16 @@ TEST_P(TestList, AddOneElement)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
+TEST_P(TestList, InsertOneElementAtEnd)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+    list->InsertAt(list->Size(), 42);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(1, list->Size());
+    EXPECT_EQ(42, list->At(0));
+    EXPECT_THROW(list->At(1), std::out_of_range);
+}
+
 TEST_P(TestList, RemoveOneElement)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
@@ -60,12 +70,42 @@ TEST_P(TestList, RemoveOneElement)
     EXPECT_THROW(list->At(0), std::out_of_range);
 }
 
+TEST_P(TestList, RemoveOneElementAtBeginning)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+
+    list->Add(42);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(1, list->Size());
+    EXPECT_EQ(42, list->At(0));
+    EXPECT_THROW(list->At(1), std::out_of_range);
+
+    list->RemoveAt(0);
+    EXPECT_TRUE(list->IsEmpty());
+    EXPECT_EQ(0, list->Size());
+    EXPECT_THROW(list->At(0), std::out_of_range);
+}
+
 TEST_P(TestList, AddMultipleElements)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     list->Add(3);
     list->Add(1);
     list->Add(2);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(3, list->Size());
+    EXPECT_EQ(3, list->At(0));
+    EXPECT_EQ(1, list->At(1));
+    EXPECT_EQ(2, list->At(2));
+    EXPECT_THROW(list->At(3), std::out_of_range);
+}
+
+TEST_P(TestList, AddMultipleElementsAtEnd)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+    list->InsertAt(list->Size(), 3);
+    list->InsertAt(list->Size(), 1);
+    list->InsertAt(list->Size(), 2);
     EXPECT_FALSE(list->IsEmpty());
     EXPECT_EQ(3, list->Size());
     EXPECT_EQ(3, list->At(0));
@@ -96,10 +136,38 @@ TEST_P(TestList, RemoveMultipleElements)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
+TEST_P(TestList, RemoveMultipleElementsAtBeginning)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+
+    list->Add(3);
+    list->Add(1);
+    list->Add(2);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(3, list->Size());
+    EXPECT_EQ(3, list->At(0));
+    EXPECT_EQ(1, list->At(1));
+    EXPECT_EQ(2, list->At(2));
+    EXPECT_THROW(list->At(3), std::out_of_range);
+
+    list->RemoveAt(0);
+    list->RemoveAt(0);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(1, list->Size());
+    EXPECT_EQ(2, list->At(0));
+    EXPECT_THROW(list->At(1), std::out_of_range);
+}
+
 TEST_P(TestList, TryToRemoveFromEmptyList)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     EXPECT_THROW(list->RemoveFirst(), std::out_of_range);
+}
+
+TEST_P(TestList, TryToRemoveFromEmptyListNew) // TODO Rename & remove old test using RemoveFirst
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+    EXPECT_THROW(list->RemoveAt(0), std::out_of_range);
 }
 
 TEST_P(TestList, Clear)

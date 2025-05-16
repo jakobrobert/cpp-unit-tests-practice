@@ -41,7 +41,7 @@ public:
         size++;
     }
 
-    void InsertAt(size_t index) override
+    void InsertAt(size_t index, const T& value) override
     {
         // TODO implement
     }
