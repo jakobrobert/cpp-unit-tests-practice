@@ -44,18 +44,16 @@ public:
     void InsertAt(size_t index, const T& value) override
     {
         Node* newNode = new Node(value);
+        size++;
 
         if (head == nullptr)
         {
             head = last = newNode;
+            return;
         }
-        else
-        {
-            last->next = newNode;
-            last = newNode;
-        }
-
-        size++;
+        
+        last->next = newNode;
+        last = newNode;
     }
 
     void RemoveFirst() override

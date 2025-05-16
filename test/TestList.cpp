@@ -102,7 +102,6 @@ TEST_P(TestList, AddMultipleElements)
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
 
-// TODO Test: insert multiple at beginning
 TEST_P(TestList, InsertMultipleElementsAtBeginning)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
@@ -132,6 +131,8 @@ TEST_P(TestList, AddMultipleElementsAtEnd)
     EXPECT_EQ(2, list->At(2));
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
+
+// TODO Test: Insert with index out of range, e.g. empty list, try insert at 1
 
 TEST_P(TestList, RemoveMultipleElements)
 {
