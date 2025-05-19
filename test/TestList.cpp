@@ -116,9 +116,7 @@ TEST_P(TestList, InsertMultipleElementsAtBeginning)
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
 
-// TODO Test: insert multiple at middle
-
-TEST_P(TestList, AddMultipleElementsAtEnd)
+TEST_P(TestList, InsertMultipleElementsAtEnd)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     list->InsertAt(list->Size(), 3);
@@ -132,8 +130,11 @@ TEST_P(TestList, AddMultipleElementsAtEnd)
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
 
+// TODO Test: insert multiple at middle
+
 // TODO Test: Insert with index out of range, e.g. empty list, try insert at 1
 
+// TODO Later: Remove this test, remove method RemoveFirst
 TEST_P(TestList, RemoveMultipleElements)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
@@ -178,9 +179,9 @@ TEST_P(TestList, RemoveMultipleElementsAtBeginning)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
-// TODO Test: Remove multiple at middle
-
 // TODO Test: Remove multiple at end
+
+// TODO Test: Remove multiple at middle
 
 TEST_P(TestList, TryToRemoveFromEmptyList)
 {
@@ -193,6 +194,8 @@ TEST_P(TestList, TryToRemoveFromEmptyListNew) // TODO Rename & remove old test u
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     EXPECT_THROW(list->RemoveAt(0), std::out_of_range);
 }
+
+// TODO Test: Remove from invalid index -> list has 3 elements, remove at index 3
 
 TEST_P(TestList, Clear)
 {
