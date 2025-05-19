@@ -79,10 +79,32 @@ public:
         if (head == nullptr)
             throw std::out_of_range("List is empty");
 
-        Node* oldHead = head;
-        head = head->next;
-        delete oldHead;
         size--;
+
+        if (index == 0)
+        {
+            Node* oldHead = head;
+            head = head->next;
+            delete oldHead;
+
+            if (head == nullptr)
+                tail = nullptr;
+
+            return;
+        }
+
+        Node* prev = nullptr;
+        Node* curr = head;
+
+        while (curr != tail)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+
+        delete tail;
+        prev->next = nullptr;
+        tail = prev;
     }
 
     void Clear() override
