@@ -180,6 +180,27 @@ TEST_P(TestList, RemoveMultipleElementsAtBeginning)
 }
 
 // TODO Test: Remove multiple at end
+TEST_P(TestList, RemoveMultipleElementsAtEnd)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+
+    list->Add(3);
+    list->Add(1);
+    list->Add(2);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(3, list->Size());
+    EXPECT_EQ(3, list->At(0));
+    EXPECT_EQ(1, list->At(1));
+    EXPECT_EQ(2, list->At(2));
+    EXPECT_THROW(list->At(3), std::out_of_range);
+
+    list->RemoveAt(list->Size() - 1);
+    list->RemoveAt(list->Size() - 1);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(1, list->Size());
+    EXPECT_EQ(3, list->At(0));
+    EXPECT_THROW(list->At(1), std::out_of_range);
+}
 
 // TODO Test: Remove multiple at middle
 
