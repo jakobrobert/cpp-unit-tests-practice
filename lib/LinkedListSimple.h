@@ -30,12 +30,12 @@ public:
 
         if (head == nullptr)
         {
-            head = last = newNode;
+            head = tail = newNode;
         }
         else
         {
-            last->next = newNode;
-            last = newNode;
+            tail->next = newNode;
+            tail = newNode;
         }
 
         size++;
@@ -48,7 +48,7 @@ public:
 
         if (head == nullptr)
         {
-            head = last = newNode;
+            head = tail = newNode;
             return;
         }
 
@@ -59,8 +59,8 @@ public:
             return;
         }
 
-        last->next = newNode;
-        last = newNode;
+        tail->next = newNode;
+        tail = newNode;
     }
 
     void RemoveFirst() override
@@ -123,6 +123,6 @@ public:
 
 private:
     Node* head = nullptr;
-    Node* last = nullptr;
+    Node* tail = nullptr;
     size_t size = 0;
 };

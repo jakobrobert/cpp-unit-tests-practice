@@ -20,7 +20,7 @@ private:
 
 public:
     LinkedListWithSentinelNode()
-        : sentinel(new Node(T())), last(sentinel)
+        : sentinel(new Node(T())), tail(sentinel)
     {}
 
     ~LinkedListWithSentinelNode() override
@@ -32,16 +32,16 @@ public:
     void Add(const T& value) override
     {
         Node* newNode = new Node(value);
-        last->next = newNode;
-        last = newNode;
+        tail->next = newNode;
+        tail = newNode;
         size++;
     }
 
     void InsertAt(size_t index, const T& value) override
     {
         Node* newNode = new Node(value);
-        last->next = newNode;
-        last = newNode;
+        tail->next = newNode;
+        tail = newNode;
         size++;
     }
 
@@ -53,8 +53,8 @@ public:
         Node* nodeToRemove = sentinel->next;
         sentinel->next = nodeToRemove->next;
 
-        if (nodeToRemove == last)
-            last = sentinel;
+        if (nodeToRemove == tail)
+            tail = sentinel;
 
         delete nodeToRemove;
         size--;
@@ -68,8 +68,8 @@ public:
         Node* nodeToRemove = sentinel->next;
         sentinel->next = nodeToRemove->next;
 
-        if (nodeToRemove == last)
-            last = sentinel;
+        if (nodeToRemove == tail)
+            tail = sentinel;
 
         delete nodeToRemove;
         size--;
@@ -87,7 +87,7 @@ public:
         }
 
         sentinel->next = nullptr;
-        last = sentinel;
+        tail = sentinel;
         size = 0;
     }
 
@@ -125,6 +125,6 @@ public:
 
 private:
     Node* sentinel = nullptr;
-    Node* last = nullptr;
+    Node* tail = nullptr;
     size_t size = 0;
 };
