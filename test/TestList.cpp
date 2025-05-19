@@ -179,7 +179,6 @@ TEST_P(TestList, RemoveMultipleElementsAtBeginning)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
-// TODO Test: Remove multiple at end
 TEST_P(TestList, RemoveMultipleElementsAtEnd)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());

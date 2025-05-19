@@ -77,11 +77,16 @@ public:
         if (IsEmpty())
             throw std::out_of_range("List is empty");
 
-        Node* nodeToRemove = sentinel->next;
-        sentinel->next = nodeToRemove->next;
+        Node* prev = sentinel;
+
+        for (size_t i = 0; i < index; i++)
+            prev = prev->next;
+        
+        Node* nodeToRemove = prev->next;
+        prev->next = nodeToRemove->next;
 
         if (nodeToRemove == tail)
-            tail = sentinel;
+            tail = prev;
 
         delete nodeToRemove;
         size--;
