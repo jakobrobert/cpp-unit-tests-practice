@@ -40,9 +40,21 @@ public:
     void InsertAt(size_t index, const T& value) override
     {
         Node* newNode = new Node(value);
+        size++;
+        
+        if (index == 0)
+        {
+            newNode->next = sentinel->next;
+            sentinel->next = newNode;
+
+            if (tail == sentinel)
+                tail = newNode;
+
+            return;
+        }
+
         tail->next = newNode;
         tail = newNode;
-        size++;
     }
 
     void RemoveFirst() override
