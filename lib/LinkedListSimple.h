@@ -48,18 +48,14 @@ public:
         Node* newNode = new Node(value);
         size++;
 
-        // TODO remove debug code
-
         if (head == nullptr)
         {
-            std::cout << "insert into empty list" << std::endl;
             head = tail = newNode;
             return;
         }
 
         if (index == 0)
         {
-            std::cout << "insert at beginning" << std::endl;
             newNode->next = head;
             head = newNode;
             return;
@@ -67,13 +63,10 @@ public:
 
         if (index == size - 1) // -1 because checking old size, before increment
         {
-            std::cout << "insert at end" << std::endl;
             tail->next = newNode;
             tail = newNode;
             return;
         }
-
-        std::cout << "insert at middle" << std::endl;
 
         Node* prev = head;
 
