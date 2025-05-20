@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 template <typename T>
-class LinkedListWithSentinelNode : public List<T>
+class LinkedListSentinel : public List<T>
 {
 private:
     struct Node
@@ -19,11 +19,11 @@ private:
     };
 
 public:
-    LinkedListWithSentinelNode()
+    LinkedListSentinel()
         : sentinel(new Node(T())), tail(sentinel)
     {}
 
-    ~LinkedListWithSentinelNode() override
+    ~LinkedListSentinel() override
     {
         Clear();
         delete sentinel;

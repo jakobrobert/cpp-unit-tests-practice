@@ -7,7 +7,7 @@
 enum class ListType
 {
     Simple,
-    WithSentinelNode
+    Sentinel
 };
 
 template <typename T>
@@ -17,8 +17,8 @@ std::unique_ptr<List<T>> CreateList(ListType type)
     {
         case ListType::Simple:
             return std::make_unique<LinkedListSimple<T>>();
-        case ListType::WithSentinelNode:
-            return std::make_unique<LinkedListWithSentinelNode<T>>();
+        case ListType::Sentinel:
+            return std::make_unique<LinkedListSentinel<T>>();
         default:
             throw std::invalid_argument("Invalid ListType");
     }
@@ -76,7 +76,7 @@ TEST_P(TestList, InsertMultipleElementsAtEnd)
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
 
-TEST_P(TestList, InsertMultipleElementsAtMiddle)
+TEST_P(TestList, InsertMultipleElementsInMiddle)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     list->InsertAt(0, 1);
@@ -165,7 +165,7 @@ TEST_P(TestList, RemoveMultipleElementsAtEnd)
     EXPECT_THROW(list->At(1), std::out_of_range);
 }
 
-// TODO Test: Remove multiple at middle
+// TODO Test: Remove multiple in middle
 
 TEST_P(TestList, TryToRemoveFromEmptyList)
 {
@@ -204,12 +204,12 @@ TEST_P(TestList, Clear)
 INSTANTIATE_TEST_SUITE_P(
     ListImplementations,
     TestList,
-    ::testing::Values(ListType::Simple, ListType::WithSentinelNode),
+    ::testing::Values(ListType::Simple, ListType::Sentinel),
     [](const testing::TestParamInfo<ListType>& info) {
         switch (info.param)
         {
             case ListType::Simple: return "Simple";
-            case ListType::WithSentinelNode: return "WithSentinelNode";
+            case ListType::Sentinel: return "Sentinel";
             default: return "Unknown";
         }
     }
