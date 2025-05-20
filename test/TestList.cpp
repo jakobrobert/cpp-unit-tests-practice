@@ -34,60 +34,6 @@ TEST_P(TestList, Empty)
     EXPECT_THROW(list->At(0), std::out_of_range);
 }
 
-TEST_P(TestList, AddOneElement)
-{
-    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-    list->Add(42);
-    EXPECT_FALSE(list->IsEmpty());
-    EXPECT_EQ(1, list->Size());
-    EXPECT_EQ(42, list->At(0));
-    EXPECT_THROW(list->At(1), std::out_of_range);
-}
-
-// TODO: Remove test InsertOneElement, already covered by InsertMultipleElements, it brings no additional value
-TEST_P(TestList, InsertOneElement)
-{
-    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-    list->InsertAt(0, 42);
-    EXPECT_FALSE(list->IsEmpty());
-    EXPECT_EQ(1, list->Size());
-    EXPECT_EQ(42, list->At(0));
-    EXPECT_THROW(list->At(1), std::out_of_range);
-}
-
-TEST_P(TestList, RemoveOneElement)
-{
-    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-
-    list->Add(42);
-    EXPECT_FALSE(list->IsEmpty());
-    EXPECT_EQ(1, list->Size());
-    EXPECT_EQ(42, list->At(0));
-    EXPECT_THROW(list->At(1), std::out_of_range);
-
-    list->RemoveFirst();
-    EXPECT_TRUE(list->IsEmpty());
-    EXPECT_EQ(0, list->Size());
-    EXPECT_THROW(list->At(0), std::out_of_range);
-}
-
-// TODO: Remove test RemoveOneElement, already covered by RemoveMultipleElements, it brings no additional value
-TEST_P(TestList, RemoveOneElementAtBeginning)
-{
-    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-
-    list->Add(42);
-    EXPECT_FALSE(list->IsEmpty());
-    EXPECT_EQ(1, list->Size());
-    EXPECT_EQ(42, list->At(0));
-    EXPECT_THROW(list->At(1), std::out_of_range);
-
-    list->RemoveAt(0);
-    EXPECT_TRUE(list->IsEmpty());
-    EXPECT_EQ(0, list->Size());
-    EXPECT_THROW(list->At(0), std::out_of_range);
-}
-
 TEST_P(TestList, AddMultipleElements)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
