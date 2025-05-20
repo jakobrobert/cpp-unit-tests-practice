@@ -76,7 +76,21 @@ TEST_P(TestList, InsertMultipleElementsAtEnd)
     EXPECT_THROW(list->At(3), std::out_of_range);
 }
 
-// TODO Test: insert multiple at middle
+TEST_P(TestList, InsertMultipleElementsAtMiddle)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+    list->InsertAt(0, 1);
+    list->InsertAt(1, 2);
+    list->InsertAt(1, 3);
+    list->InsertAt(2, 4);
+    EXPECT_FALSE(list->IsEmpty());
+    EXPECT_EQ(4, list->Size());
+    EXPECT_EQ(1, list->At(0));
+    EXPECT_EQ(3, list->At(1));
+    EXPECT_EQ(4, list->At(2));
+    EXPECT_EQ(2, list->At(3));
+    EXPECT_THROW(list->At(4), std::out_of_range);
+}
 
 // TODO Test: Insert with index out of range, e.g. empty list, try insert at 1
 
