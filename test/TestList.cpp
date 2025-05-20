@@ -80,9 +80,13 @@ TEST_P(TestList, InsertMultipleElementsAtMiddle)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
     list->InsertAt(0, 1);
+    std::cout << list->At(0) << std::endl;
     list->InsertAt(1, 2);
+    std::cout << list->At(0) << ", " << list->At(1) << std::endl;
     list->InsertAt(1, 3);
+    std::cout << list->At(0) << ", " << list->At(1) << ", " << list->At(2) << std::endl;
     list->InsertAt(2, 4);
+    std::cout << list->At(0) << ", " << list->At(1) << ", " << list->At(2) << ", " << list->At(3) << std::endl;
     EXPECT_FALSE(list->IsEmpty());
     EXPECT_EQ(4, list->Size());
     EXPECT_EQ(1, list->At(0));

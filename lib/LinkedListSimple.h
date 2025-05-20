@@ -43,24 +43,47 @@ public:
 
     void InsertAt(size_t index, const T& value) override
     {
+        // TODO exception for index > size. add test first.
+
         Node* newNode = new Node(value);
         size++;
 
+        // TODO remove debug code
+
         if (head == nullptr)
         {
+            std::cout << "insert into empty list" << std::endl;
             head = tail = newNode;
             return;
         }
 
         if (index == 0)
         {
+            std::cout << "insert at beginning" << std::endl;
             newNode->next = head;
             head = newNode;
             return;
         }
 
-        tail->next = newNode;
-        tail = newNode;
+        if (index == size - 1) // -1 because checking old size, before increment
+        {
+            std::cout << "insert at end" << std::endl;
+            tail->next = newNode;
+            tail = newNode;
+            return;
+        }
+
+        std::cout << "insert at middle" << std::endl;
+
+        Node* prev = head;
+
+        for (size_t i = 1; i < index; i++)
+        {
+            prev = prev->next;
+        }
+
+        newNode->next = prev->next;
+        prev->next = newNode;
     }
 
     void RemoveFirst() override
@@ -109,6 +132,8 @@ public:
 
     void Clear() override
     {
+        // TODO optimize: can inline, currently additional head == nullptr check done in each RemoveFirst call, but is already done by IsEmpty.
+        //  -> as well, no need to dec size each step, just size = 0 at end
         while (!IsEmpty())
             RemoveFirst();
     }
