@@ -39,22 +39,23 @@ public:
 
     void InsertAt(size_t index, const T& value) override
     {
-        Node* newNode = new Node(value);
-        size++;
-        
-        if (index == 0)
+        // TODO Throw exception if index too large -> add test first
+
+
+        Node* prev = sentinel;
+        for (size_t i = 0; i < index; i++)
         {
-            newNode->next = sentinel->next;
-            sentinel->next = newNode;
-
-            if (tail == sentinel)
-                tail = newNode;
-
-            return;
+            prev = prev->next;
         }
 
-        tail->next = newNode;
-        tail = newNode;
+        Node* newNode = new Node(value);
+        newNode->next = prev->next;
+        prev->next = newNode;
+
+        if (prev == tail)
+            tail = newNode;
+        
+        size++;
     }
 
     void RemoveFirst() override
