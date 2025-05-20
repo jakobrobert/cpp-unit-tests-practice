@@ -29,18 +29,9 @@ public:
         delete sentinel;
     }
 
-    void Add(const T& value) override
-    {
-        Node* newNode = new Node(value);
-        tail->next = newNode;
-        tail = newNode;
-        size++;
-    }
-
     void InsertAt(size_t index, const T& value) override
     {
         // TODO Throw exception if index too large -> add test first
-
 
         Node* prev = sentinel;
         for (size_t i = 0; i < index; i++)
@@ -56,21 +47,6 @@ public:
             tail = newNode;
         
         size++;
-    }
-
-    void RemoveFirst() override
-    {
-        if (IsEmpty())
-            throw std::out_of_range("List is empty");
-
-        Node* nodeToRemove = sentinel->next;
-        sentinel->next = nodeToRemove->next;
-
-        if (nodeToRemove == tail)
-            tail = sentinel;
-
-        delete nodeToRemove;
-        size--;
     }
 
     void RemoveAt(size_t index) override
@@ -124,12 +100,13 @@ public:
         if (sentinel->next == nullptr)
             throw std::out_of_range("List is empty");
 
+        // TODO optimize: index too large check here, see LinkedListSimple
+
         size_t currentIndex = 0;
         Node* currentNode = sentinel->next;
         
         while (currentNode != nullptr)
         {
-            // TODO Optimize: No need to do this index check, can just move next pointer in for loop, iterating by index
             if (currentIndex == index)
                 return currentNode->value;
 
@@ -137,12 +114,11 @@ public:
             currentIndex++;
         }
 
-        // TODO Optimize: Do check index >= size in beginning. same in LinkedListSimple
         throw std::out_of_range("Index is too large");
     }
 
 private:
     Node* sentinel = nullptr;
-    Node* tail = nullptr;
+    Node* tail = nullptr; // TODO refactor: can remove tail? was useful for Add, but removed it. Just remove, if tests still pass, it is fine.
     size_t size = 0;
 };

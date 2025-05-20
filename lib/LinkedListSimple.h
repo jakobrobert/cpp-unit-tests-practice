@@ -24,23 +24,6 @@ public:
         Clear();
     }
 
-    void Add(const T& value) override
-    {
-        Node* newNode = new Node(value);
-
-        if (head == nullptr)
-        {
-            head = tail = newNode;
-        }
-        else
-        {
-            tail->next = newNode;
-            tail = newNode;
-        }
-
-        size++;
-    }
-
     void InsertAt(size_t index, const T& value) override
     {
         // TODO exception for index > size. add test first.
@@ -77,17 +60,6 @@ public:
 
         newNode->next = prev->next;
         prev->next = newNode;
-    }
-
-    void RemoveFirst() override
-    {
-        if (head == nullptr)
-            throw std::out_of_range("List is empty");
-
-        Node* oldHead = head;
-        head = head->next;
-        delete oldHead;
-        size--;
     }
 
     void RemoveAt(size_t index) override
@@ -128,7 +100,7 @@ public:
         // TODO optimize: can inline, currently additional head == nullptr check done in each RemoveFirst call, but is already done by IsEmpty.
         //  -> as well, no need to dec size each step, just size = 0 at end
         while (!IsEmpty())
-            RemoveFirst();
+            RemoveAt(0);
     }
 
     bool IsEmpty() const override
@@ -146,6 +118,8 @@ public:
         if (head == nullptr)
             throw std::out_of_range("List is empty");
 
+        // TODO optimize: already check index too large here. no need to check nullptr in loop, just use index based for loop. for index == 1, update currentNode 1x
+        
         size_t currentIndex = 0;
         Node* currentNode = head;
         
@@ -163,6 +137,6 @@ public:
 
 private:
     Node* head = nullptr;
-    Node* tail = nullptr;
+    Node* tail = nullptr; // TODO refactor: can remove tail? was useful for Add, but removed it. Just remove, if tests still pass, it is fine.
     size_t size = 0;
 };
