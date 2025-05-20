@@ -2,7 +2,7 @@
 #include <memory>
 
 #include "LinkedListSimple.h"
-#include "LinkedListWithSentinelNode.h"
+#include "LinkedListSentinel.h"
 
 enum class ListType
 {
