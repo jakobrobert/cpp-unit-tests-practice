@@ -101,21 +101,14 @@ public:
         if (head == nullptr)
             throw std::out_of_range("List is empty");
 
-        // TODO optimize: already check index too large here. no need to check nullptr in loop, just use index based for loop. for index == 1, update currentNode 1x
+        if (index >= size)
+            throw std::out_of_range("Index is too large");
         
-        size_t currentIndex = 0;
-        Node* currentNode = head;
-        
-        while (currentNode != nullptr)
-        {
-            if (currentIndex == index)
-                return currentNode->value;
+        Node* curr = head; 
+        for (size_t i = 0; i < index; i++)
+            curr = curr->next;
 
-            currentNode = currentNode->next;
-            currentIndex++;
-        }
-
-        throw std::out_of_range("Index is too large");
+        return curr->value;
     }
 
 private:
