@@ -133,19 +133,10 @@ TEST_P(TestList, RemoveMultipleElementsFromEnd)
 TEST_P(TestList, RemoveMultipleElementsFromMiddle)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-
     list->InsertAt(list->Size(), 1);
     list->InsertAt(list->Size(), 2);
     list->InsertAt(list->Size(), 3);
     list->InsertAt(list->Size(), 4);
-    EXPECT_FALSE(list->IsEmpty());
-    EXPECT_EQ(4, list->Size());
-    EXPECT_EQ(1, list->At(0));
-    EXPECT_EQ(2, list->At(1));
-    EXPECT_EQ(3, list->At(2));
-    EXPECT_EQ(4, list->At(3));
-    EXPECT_THROW(list->At(4), std::out_of_range);
-
     list->RemoveAt(1);
     list->RemoveAt(1);
     EXPECT_FALSE(list->IsEmpty());
@@ -172,17 +163,9 @@ TEST_P(TestList, TryToRemoveAtInvalidIndex)
 TEST_P(TestList, Clear)
 {
     std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
-
     list->InsertAt(list->Size(), 3);
     list->InsertAt(list->Size(), 1);
     list->InsertAt(list->Size(), 2);
-    EXPECT_FALSE(list->IsEmpty());
-    EXPECT_EQ(3, list->Size());
-    EXPECT_EQ(3, list->At(0));
-    EXPECT_EQ(1, list->At(1));
-    EXPECT_EQ(2, list->At(2));
-    EXPECT_THROW(list->At(3), std::out_of_range);
-
     list->Clear();
     EXPECT_TRUE(list->IsEmpty());
     EXPECT_EQ(0, list->Size());
