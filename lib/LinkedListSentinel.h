@@ -62,15 +62,13 @@ public:
 
     void Clear() override
     {
-        Node* current = sentinel->next;
-        while (current != nullptr)
+        while (sentinel->next != nullptr)
         {
-            Node* next = current->next;
-            delete current;
-            current = next;
+            Node* oldSentinel = sentinel;
+            sentinel = sentinel->next;
+            delete oldSentinel;
         }
 
-        sentinel->next = nullptr;
         size = 0;
     }
 
