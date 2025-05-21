@@ -26,7 +26,8 @@ public:
 
     void InsertAt(size_t index, const T& value) override
     {
-        // TODO Throw exception if index too large -> add test first
+        if (index > size)
+            throw std::out_of_range("Index is too large");
 
         Node* newNode = new Node(value);
         size++;
