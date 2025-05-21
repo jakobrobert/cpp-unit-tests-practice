@@ -33,7 +33,7 @@ public:
 
         if (head == nullptr)
         {
-            head = tail = newNode;
+            head = newNode;
             return;
         }
 
@@ -44,15 +44,7 @@ public:
             return;
         }
 
-        if (index == size - 1) // -1 because checking old size, before increment
-        {
-            tail->next = newNode;
-            tail = newNode;
-            return;
-        }
-
         Node* prev = head;
-
         for (size_t i = 1; i < index; i++)
         {
             prev = prev->next;
@@ -74,10 +66,6 @@ public:
             Node* oldHead = head;
             head = head->next;
             delete oldHead;
-
-            if (head == nullptr)
-                tail = nullptr;
-
             return;
         }
 
@@ -132,6 +120,5 @@ public:
 
 private:
     Node* head = nullptr;
-    Node* tail = nullptr; // TODO refactor: can remove tail? was useful for Add, but removed it. Just remove, if tests still pass, it is fine.
     size_t size = 0;
 };
