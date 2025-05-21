@@ -80,10 +80,14 @@ public:
 
     void Clear() override
     {
-        // TODO optimize: can inline, currently additional head == nullptr check done in each RemoveFirst call, but is already done by IsEmpty.
-        //  -> as well, no need to dec size each step, just size = 0 at end
-        while (!IsEmpty())
-            RemoveAt(0);
+        while (head != nullptr)
+        {
+            Node* oldHead = head;
+            head = head->next;
+            delete oldHead;
+        }
+
+        size = 0;
     }
 
     bool IsEmpty() const override
