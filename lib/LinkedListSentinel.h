@@ -20,7 +20,7 @@ private:
 
 public:
     LinkedListSentinel()
-        : sentinel(new Node(T())), tail(sentinel)
+        : sentinel(new Node(T()))
     {}
 
     ~LinkedListSentinel() override
@@ -40,10 +40,6 @@ public:
         Node* newNode = new Node(value);
         newNode->next = prev->next;
         prev->next = newNode;
-
-        if (prev == tail)
-            tail = newNode;
-        
         size++;
     }
 
@@ -59,10 +55,6 @@ public:
         
         Node* nodeToRemove = prev->next;
         prev->next = nodeToRemove->next;
-
-        if (nodeToRemove == tail)
-            tail = prev;
-
         delete nodeToRemove;
         size--;
     }
@@ -79,7 +71,6 @@ public:
         }
 
         sentinel->next = nullptr;
-        tail = sentinel;
         size = 0;
     }
 
@@ -117,6 +108,5 @@ public:
 
 private:
     Node* sentinel = nullptr;
-    Node* tail = nullptr; // TODO refactor: can remove tail? was useful for Add, but removed it. Just remove, if tests still pass, it is fine.
     size_t size = 0;
 };

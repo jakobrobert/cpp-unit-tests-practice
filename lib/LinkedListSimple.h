@@ -74,7 +74,7 @@ public:
             prev = prev->next;
 
         Node* nodeToRemove = prev->next;
-        prev->next = prev->next->next;
+        prev->next = nodeToRemove->next;
         delete nodeToRemove;
     }
 
