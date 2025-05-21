@@ -35,9 +35,7 @@ public:
 
         Node* prev = sentinel;
         for (size_t i = 0; i < index; i++)
-        {
             prev = prev->next;
-        }
 
         Node* newNode = new Node(value);
         newNode->next = prev->next;

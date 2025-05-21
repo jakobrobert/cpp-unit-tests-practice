@@ -81,18 +81,13 @@ public:
             return;
         }
 
-        Node* prev = nullptr;
-        Node* curr = head;
+        Node* prev = head;
+        for (size_t i = 1; i < index; i++)
+            prev = prev->next;
 
-        while (curr != tail)
-        {
-            prev = curr;
-            curr = curr->next;
-        }
-
-        delete tail;
-        prev->next = nullptr;
-        tail = prev;
+        Node* nodeToRemove = prev->next;
+        prev->next = prev->next->next;
+        delete nodeToRemove;
     }
 
     void Clear() override
