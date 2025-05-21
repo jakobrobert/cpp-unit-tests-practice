@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 template <typename T>
-class LinkedListSimple : public List<T>
+class LinkedListSentinel : public List<T>
 {
 private:
     struct Node
@@ -19,9 +19,14 @@ private:
     };
 
 public:
-    ~LinkedListSimple() override
+    LinkedListSentinel()
+        : sentinel(new Node(T()))
+    {}
+
+    ~LinkedListSentinel() override
     {
         Clear();
+        delete sentinel;
     }
 
     void InsertAt(size_t index, const T& value) override
@@ -29,66 +34,41 @@ public:
         if (index > size)
             throw std::out_of_range("Index is too large");
 
-        Node* newNode = new Node(value);
-        size++;
-
-        if (head == nullptr)
-        {
-            head = newNode;
-            return;
-        }
-
-        if (index == 0)
-        {
-            newNode->next = head;
-            head = newNode;
-            return;
-        }
-
-        Node* prev = head;
-        for (size_t i = 1; i < index; i++)
-        {
+        Node* prev = sentinel;
+        for (size_t i = 0; i < index; i++)
             prev = prev->next;
-        }
 
+        Node* newNode = new Node(value);
         newNode->next = prev->next;
         prev->next = newNode;
+        size++;
     }
 
     void RemoveAt(size_t index) override
     {
-        if (head == nullptr)
+        if (IsEmpty())
             throw std::out_of_range("List is empty");
 
         if (index >= size)
             throw std::out_of_range("Index is too large");
 
-        size--;
-
-        if (index == 0)
-        {
-            Node* oldHead = head;
-            head = head->next;
-            delete oldHead;
-            return;
-        }
-
-        Node* prev = head;
-        for (size_t i = 1; i < index; i++)
+        Node* prev = sentinel;
+        for (size_t i = 0; i < index; i++)
             prev = prev->next;
-
+        
         Node* nodeToRemove = prev->next;
         prev->next = nodeToRemove->next;
         delete nodeToRemove;
+        size--;
     }
 
     void Clear() override
     {
-        while (head != nullptr)
+        while (sentinel->next != nullptr)
         {
-            Node* oldHead = head;
-            head = head->next;
-            delete oldHead;
+            Node* oldSentinel = sentinel;
+            sentinel = sentinel->next;
+            delete oldSentinel;
         }
 
         size = 0;
@@ -96,7 +76,7 @@ public:
 
     bool IsEmpty() const override
     {
-        return head == nullptr;
+        return sentinel->next == nullptr;
     }
 
     size_t Size() const override
@@ -106,13 +86,13 @@ public:
     
     const T& At(size_t index) const override
     {
-        if (head == nullptr)
+        if (sentinel->next == nullptr)
             throw std::out_of_range("List is empty");
 
         if (index >= size)
             throw std::out_of_range("Index is too large");
-        
-        Node* curr = head; 
+
+        Node* curr = sentinel->next; 
         for (size_t i = 0; i < index; i++)
             curr = curr->next;
 
@@ -120,6 +100,6 @@ public:
     }
 
 private:
-    Node* head = nullptr;
+    Node* sentinel = nullptr;
     size_t size = 0;
 };
