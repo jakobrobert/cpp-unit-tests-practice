@@ -89,21 +89,14 @@ public:
         if (sentinel->next == nullptr)
             throw std::out_of_range("List is empty");
 
-        // TODO optimize: index too large check here, see LinkedListSimple
+        if (index >= size)
+            throw std::out_of_range("Index is too large");
 
-        size_t currentIndex = 0;
-        Node* currentNode = sentinel->next;
-        
-        while (currentNode != nullptr)
-        {
-            if (currentIndex == index)
-                return currentNode->value;
+        Node* curr = sentinel->next; 
+        for (size_t i = 0; i < index; i++)
+            curr = curr->next;
 
-            currentNode = currentNode->next;
-            currentIndex++;
-        }
-
-        throw std::out_of_range("Index is too large");
+        return curr->value;
     }
 
 private:
