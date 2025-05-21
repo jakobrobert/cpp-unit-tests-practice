@@ -48,8 +48,9 @@ public:
         if (IsEmpty())
             throw std::out_of_range("List is empty");
 
-        Node* prev = sentinel;
+        // TODO Throw exception if index too large -> add test first
 
+        Node* prev = sentinel;
         for (size_t i = 0; i < index; i++)
             prev = prev->next;
         
@@ -62,7 +63,6 @@ public:
     void Clear() override
     {
         Node* current = sentinel->next;
-
         while (current != nullptr)
         {
             Node* next = current->next;
