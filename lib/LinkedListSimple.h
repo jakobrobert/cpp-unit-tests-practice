@@ -60,7 +60,8 @@ public:
         if (head == nullptr)
             throw std::out_of_range("List is empty");
 
-        // TODO Throw exception if index too large -> add test first
+        if (index >= size)
+            throw std::out_of_range("Index is too large");
 
         size--;
 
