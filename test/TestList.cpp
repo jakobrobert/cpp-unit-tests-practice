@@ -78,7 +78,13 @@ TEST_P(TestList, InsertMultipleElementsInMiddle)
     EXPECT_THROW(list->At(4), std::out_of_range);
 }
 
-// TODO Test: Insert with index out of range, e.g. empty list, try insert at 1
+TEST_P(TestList, TryToInsertAtInvalidIndex)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+    list->InsertAt(list->Size(), 1);
+    list->InsertAt(list->Size(), 2);
+    EXPECT_THROW(list->InsertAt(list->Size() + 1, 3), std::out_of_range);
+}
 
 TEST_P(TestList, RemoveMultipleElementsFromBeginning)
 {

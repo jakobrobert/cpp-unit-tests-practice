@@ -26,7 +26,7 @@ public:
 
     void InsertAt(size_t index, const T& value) override
     {
-        // TODO exception for index > size. add test first.
+        // TODO Throw exception if index too large -> add test first
 
         Node* newNode = new Node(value);
         size++;
@@ -58,6 +58,8 @@ public:
     {
         if (head == nullptr)
             throw std::out_of_range("List is empty");
+
+        // TODO Throw exception if index too large -> add test first
 
         size--;
 
