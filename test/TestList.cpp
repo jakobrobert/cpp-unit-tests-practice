@@ -161,7 +161,13 @@ TEST_P(TestList, TryToRemoveFromEmptyList)
     EXPECT_THROW(list->RemoveAt(0), std::out_of_range);
 }
 
-// TODO Test: Remove from invalid index -> list has 3 elements, remove at index 3
+TEST_P(TestList, TryToRemoveAtInvalidIndex)
+{
+    std::unique_ptr<List<int>> list = CreateList<int>(GetParam());
+    list->InsertAt(list->Size(), 1);
+    list->InsertAt(list->Size(), 2);
+    EXPECT_THROW(list->RemoveAt(list->Size()), std::out_of_range);
+}
 
 TEST_P(TestList, Clear)
 {
